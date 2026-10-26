@@ -1,5 +1,10 @@
 # PDF 知识库问答机器人
 
+[![tests](https://github.com/OWNER/kb-bot/actions/workflows/tests.yml/badge.svg)](https://github.com/OWNER/kb-bot/actions/workflows/tests.yml)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![python](https://img.shields.io/badge/python-3.12-3776AB.svg)](https://www.python.org/)
+
+
 > 一个可评测、可复现的中文 RAG 系统。**核心不是"接了几个组件"，而是每一项参数都有前后对比的数字**，
 > 包括 5 个被证伪的假设（第 10/12/14 章）。
 
