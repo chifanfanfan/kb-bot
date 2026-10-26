@@ -19,7 +19,7 @@ models:
 	$(PY) scripts/fetch_models.py
 
 build:
-	$(PY) -m kb build data/毕业论文_脱敏.pdf
+	$(PY) -m kb build data/synthetic
 
 demo:
 	$(PY) tools/demo.py

@@ -24,16 +24,25 @@ DEMO = [
     ("该拒答", "支持私有化部署吗？"),
 ]
 
-CORPUS = ROOT / "data" / "毕业论文_脱敏.pdf"
+THESIS = ROOT / "data" / "毕业论文_脱敏.pdf"
+SYNTHETIC = ROOT / "data" / "synthetic"
+
+
+def _corpus() -> list[Path]:
+    """优先用真实论文；没有的话退回仓库自带的 5 份合成文档。"""
+    if THESIS.exists():
+        return [THESIS]
+    return sorted(SYNTHETIC.glob("*.pdf"))
 
 
 def ensure_index(kb: KnowledgeBase) -> None:
     if kb.store.count() > 0:
         return
-    if not CORPUS.exists():
-        raise SystemExit("没有语料也没有索引：先运行 tools/make_sample_pdf.py 或放入 data/*.pdf")
-    print("索引为空，正在建库（首次约 30 秒）...\n")
-    kb.build([CORPUS])
+    files = _corpus()
+    if not files:
+        raise SystemExit("没有语料：把 PDF 放进 data/，或运行 tools/make_sample_pdf.py")
+    print(f"索引为空，正在用 {len(files)} 份文档建库（首次约 30 秒）...\n")
+    kb.build(files)
 
 
 def main() -> None:

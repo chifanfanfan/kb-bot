@@ -64,6 +64,16 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     if args.cmd == "build":
+        expanded: list[Path] = []
+        for p in args.pdfs:
+            if p.is_dir():
+                expanded.extend(sorted(p.glob("*.pdf")))
+            else:
+                expanded.append(p)
+        args.pdfs = expanded
+        if not args.pdfs:
+            print("没有找到 PDF")
+            return 1
         missing = [p for p in args.pdfs if not p.exists()]
         if missing:
             print(f"找不到文件：{missing}")
