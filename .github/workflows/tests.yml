@@ -23,4 +23,4 @@ jobs:
 
       # 单测不依赖模型和网络，所以不需要在这里下载 306 MB 的 ONNX 权重
       - name: Run tests
-        run: pytest tests -q
+        run: python -m pytest tests -v

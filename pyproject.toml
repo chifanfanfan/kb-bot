@@ -1,0 +1,10 @@
+[tool.pytest.ini_options]
+# 让 `pytest tests` 也能 import 到项目根目录下的 kb 包
+# （CI 里如果只写 `pytest`，cwd 不会自动进 sys.path）
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
