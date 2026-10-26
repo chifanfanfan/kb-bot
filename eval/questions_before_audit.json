@@ -1,0 +1,1647 @@
+{
+  "cases": [
+    {
+      "q": "这套系统把人工审核工作量降低了多少？违规内容识别准确率是多少？",
+      "gold": [
+        "6.1 总结"
+      ],
+      "keywords": [
+        "80%",
+        "92.5%"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "source": "human"
+    },
+    {
+      "q": "后端用什么框架、什么数据库？",
+      "gold": [
+        "6.1 总结"
+      ],
+      "keywords": [
+        "Spring Boot",
+        "MySQL"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "系统架构分成几层？",
+      "gold": [
+        "3.2 系统架构设计"
+      ],
+      "keywords": [
+        "四层"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "source": "human"
+    },
+    {
+      "q": "MyBatis-Plus 是怎么防住 SQL 注入的？",
+      "gold": [
+        "2.3.1 后端核心技术栈"
+      ],
+      "keywords": [
+        "参数预编译"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "AOP 在这个系统里承担了哪些职责？",
+      "gold": [
+        "2.3.1 后端核心技术栈"
+      ],
+      "keywords": [
+        "权限校验",
+        "日志"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "source": "human"
+    },
+    {
+      "q": "管理员能执行哪些核心操作？",
+      "gold": [
+        "2.2.2 需求分析"
+      ],
+      "keywords": [
+        "用户信息管理",
+        "审核规则配置"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "source": "human"
+    },
+    {
+      "q": "第三方审核服务抖动的时候，系统这边还能正常用吗？",
+      "gold": [
+        "5.4.2 审核链路性能测试"
+      ],
+      "keywords": [
+        "错误信息",
+        "容错"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "这篇论文的题目是什么？",
+      "gold": [
+        "正文"
+      ],
+      "keywords": [
+        "集成 AI 内容审核的社区论坛"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "作者是哪个学校的？",
+      "gold": [
+        "正文"
+      ],
+      "keywords": [
+        "东莞城市学院"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "作者毕业后去了哪家公司？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "source": "human"
+    },
+    {
+      "q": "这篇论文获得过什么奖项？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "source": "human"
+    },
+    {
+      "q": "系统上线后的真实用户量是多少？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "source": "human"
+    },
+    {
+      "q": "users 表的主键字段名和数据类型是什么？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "id",
+        "BIGINT"
+      ],
+      "refusal": false,
+      "tag": "table",
+      "source": "human"
+    },
+    {
+      "q": "posts 表里哪个字段存正文，类型是什么？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "content",
+        "TEXT"
+      ],
+      "refusal": false,
+      "tag": "table",
+      "source": "human"
+    },
+    {
+      "q": "数据库里存密码的字段叫什么，长度是多少？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "password_hash",
+        "120"
+      ],
+      "refusal": false,
+      "tag": "table",
+      "source": "human"
+    },
+    {
+      "q": "post_tags 关联表有哪两个字段？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "post_id",
+        "tag_id"
+      ],
+      "refusal": false,
+      "tag": "table",
+      "source": "human"
+    },
+    {
+      "q": "标签名最多支持多少字符？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "32"
+      ],
+      "refusal": false,
+      "tag": "table",
+      "source": "human"
+    },
+    {
+      "q": "评论表里审核状态字段叫什么名字？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "status"
+      ],
+      "refusal": false,
+      "tag": "table",
+      "source": "human"
+    },
+    {
+      "q": "这个社区论坛系统后端用的是什么框架？",
+      "gold": [
+        "ABSTRACT"
+      ],
+      "keywords": [
+        "SpringBoot"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "管理员端的内容审核流程是基于什么机制实现的？",
+      "gold": [
+        "ABSTRACT"
+      ],
+      "keywords": [
+        "FSM-based"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "这个系统前端用的是哪套技术栈？",
+      "gold": [
+        "1.1研究背景与意义"
+      ],
+      "keywords": [
+        "Vue3",
+        "Element Plus"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "中小型社区论坛在运营中普遍面临的两大核心痛点是什么？",
+      "gold": [
+        "1.1研究背景与意义"
+      ],
+      "keywords": [
+        "人工审核",
+        "底层架构与功能设计相对单一"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "这个系统主要集成了哪两项功能？",
+      "gold": [
+        "1.2 课题研究目的"
+      ],
+      "keywords": [
+        "AI 内容审核",
+        "多媒体互动"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "AI 审核模块为什么能迁移到其他中小型社交平台？",
+      "gold": [
+        "1.2 课题研究目的"
+      ],
+      "keywords": [
+        "解耦性",
+        "标准化接口规范",
+        "内容安全微服务组件"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "系统能自动识别并拦截哪些类型的内容？",
+      "gold": [
+        "1.2 课题研究目的"
+      ],
+      "keywords": [
+        "违规文本",
+        "图片内容",
+        "精准拦截"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "这个社区论坛系统给普通用户提供了哪些功能？",
+      "gold": [
+        "1.3 课题研究内容"
+      ],
+      "keywords": [
+        "注册登录",
+        "发帖回帖",
+        "图片上传与检索"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "管理员在系统里能进行哪些操作？",
+      "gold": [
+        "1.3 课题研究内容"
+      ],
+      "keywords": [
+        "板块与用户管理",
+        "违规处置",
+        "审核记录查看"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "系统层集成了什么机制来同时保证安全和性能？",
+      "gold": [
+        "1.3 课题研究内容"
+      ],
+      "keywords": [
+        "图文内容审核",
+        "异步调度机制"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "这篇论文一共分成几章，各章是按什么顺序组织的？",
+      "gold": [
+        "1.4 论文结构"
+      ],
+      "keywords": [
+        "六章",
+        "层层递进"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "系统分析部分是从哪三个方面展开的？",
+      "gold": [
+        "1.4 论文结构"
+      ],
+      "keywords": [
+        "可行性",
+        "需求",
+        "相关技术"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "论文中功能结构与数据库设计安排在哪一章，核心模块的实现又安排在哪一章？",
+      "gold": [
+        "1.4 论文结构"
+      ],
+      "keywords": [
+        "第三章",
+        "第四章"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "这个系统后端用的是什么技术生态？",
+      "gold": [
+        "2.1.1 技术可行性"
+      ],
+      "keywords": [
+        "Java",
+        "Spring Boot"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "数据层选用了哪种数据库？",
+      "gold": [
+        "2.1.1 技术可行性"
+      ],
+      "keywords": [
+        "MySQL"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "这套系统部署时对硬件有什么要求？",
+      "gold": [
+        "2.1.2 经济可行性"
+      ],
+      "keywords": [
+        "常规 CPU",
+        "内存",
+        "磁盘"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "为什么说引入自动化审核模块在经济上划算？",
+      "gold": [
+        "2.1.2 经济可行性"
+      ],
+      "keywords": [
+        "人工审核成本",
+        "长期运营成本",
+        "经济可行性"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "软件方面主要用什么，需要买商业授权吗？",
+      "gold": [
+        "2.1.2 经济可行性"
+      ],
+      "keywords": [
+        "开源框架",
+        "数据库",
+        "无需高额商业授权费用"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "普通用户通过什么方式访问这个系统？",
+      "gold": [
+        "2.1.3 操作可行性"
+      ],
+      "keywords": [
+        "浏览器访问方式"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "管理员能获得哪方面的能力？",
+      "gold": [
+        "2.1.3 操作可行性"
+      ],
+      "keywords": [
+        "后台管理能力"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "系统维护通常要做哪些工作？",
+      "gold": [
+        "2.1.3 操作可行性"
+      ],
+      "keywords": [
+        "数据备份",
+        "日志审计",
+        "接口监控"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "用户密码在系统里是怎么存的？",
+      "gold": [
+        "2.2.1 合规"
+      ],
+      "keywords": [
+        "BCrypt",
+        "加盐哈希"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "日志至少要保留多长时间？",
+      "gold": [
+        "2.2.1 合规"
+      ],
+      "keywords": [
+        "6 个月"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "违规内容处置的流程分哪几步？",
+      "gold": [
+        "2.2.1 合规"
+      ],
+      "keywords": [
+        "实时拦截",
+        "定时清理",
+        "申诉复核"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "用户发帖后，后端在返回响应之后还会在后台静默触发什么？",
+      "gold": [
+        "2.2.2 需求分析"
+      ],
+      "keywords": [
+        "AI 审核工作流",
+        "静默触发"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "AI 引擎研判后，内容状态机会根据什么自动更新为通过、拦截或进入人工复审池？",
+      "gold": [
+        "2.2.2 需求分析"
+      ],
+      "keywords": [
+        "置信度阈值",
+        "人工复审池"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "未登录访客在系统里能执行哪些只读操作？",
+      "gold": [
+        "2.2.2 需求分析"
+      ],
+      "keywords": [
+        "浏览公开帖子",
+        "查看评论"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "后端业务控制层和数据访问层是用什么语言和框架搭建的？",
+      "gold": [
+        "2.3 相关技术介绍"
+      ],
+      "keywords": [
+        "Java",
+        "Spring Boot"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "Spring Boot 靠什么机制根据类路径下的依赖库自动推断并初始化组件？",
+      "gold": [
+        "2.3 相关技术介绍"
+      ],
+      "keywords": [
+        "自动配置",
+        "Auto-configuration",
+        "Classpath"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "系统在架构上用了 Spring 的哪两大核心机制？",
+      "gold": [
+        "2.3.1 后端核心技术栈"
+      ],
+      "keywords": [
+        "控制反转（IoC）",
+        "面向切面编程（AOP）"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "用户权限校验、全局日志、接口耗时统计这些横切关注点是被什么技术从核心业务代码里剥离出去的？",
+      "gold": [
+        "2.3.1 后端核心技术栈"
+      ],
+      "keywords": [
+        "AOP",
+        "横切关注点"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "数据持久层集成的框架靠什么底层机制来防止 SQL 注入？",
+      "gold": [
+        "2.3.1 后端核心技术栈"
+      ],
+      "keywords": [
+        "MyBatis-Plus",
+        "参数预编译"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "前端界面是用哪些技术构建的？",
+      "gold": [
+        "2.3.2 前端核心技术栈"
+      ],
+      "keywords": [
+        "HTML5",
+        "CSS3",
+        "Vue3"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "上传图片时用什么组件做多格式校验和批量上传预览？",
+      "gold": [
+        "2.3.2 前端核心技术栈"
+      ],
+      "keywords": [
+        "Element Plus",
+        "上传组件"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "捕获到异步异常后，异常帖子会被标记成什么状态？",
+      "gold": [
+        "2.3.3 异常处理与容错机制"
+      ],
+      "keywords": [
+        "人工复审"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "系统在捕获异步异常后除了触发降级策略，还会持久化什么？",
+      "gold": [
+        "2.3.3 异常处理与容错机制"
+      ],
+      "keywords": [
+        "堆栈轨迹"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "未登录的用户在社区里能浏览什么样的帖子？",
+      "gold": [
+        "3.1 功能设计"
+      ],
+      "keywords": [
+        "未登录用户",
+        "已通过审核"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "自动审核和人工治理之间是什么关系？",
+      "gold": [
+        "3.1 功能设计"
+      ],
+      "keywords": [
+        "机器优先",
+        "人工兜底",
+        "治理闭环"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "用户请求进来后，系统在哪一层完成身份鉴权和请求数据格式转换？",
+      "gold": [
+        "3.2 系统架构设计"
+      ],
+      "keywords": [
+        "控制层",
+        "请求身份鉴权",
+        "请求数据格式转换"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "内容发布时，系统通过什么机制触发 AI 审核流程？",
+      "gold": [
+        "3.2 系统架构设计"
+      ],
+      "keywords": [
+        "发布订阅机制",
+        "AI 审核流程",
+        "审核任务"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "业务逻辑层封装了哪些核心业务规则？",
+      "gold": [
+        "3.2 系统架构设计"
+      ],
+      "keywords": [
+        "积分结算",
+        "帖子状态流转"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "密码在用户表里是怎么存的？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "哈希",
+        "明文"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "帖子表的主键是什么，又是通过哪个字段和用户实体关联的？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "帖子编号",
+        "用户编号"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "系统用的数据库引擎是什么，表结构规范化遵循第几范式？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "MySQL",
+        "第三范式（3NF）"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "发帖时如果审核没通过，系统会保存什么，方便用户理解并修改？",
+      "gold": [
+        "3.3 关键业务流程设计"
+      ],
+      "keywords": [
+        "拒绝状态",
+        "原因说明"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "点赞为什么要用切换式逻辑？",
+      "gold": [
+        "3.3 关键业务流程设计"
+      ],
+      "keywords": [
+        "重复累计",
+        "统计失真"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "已登录用户看到的列表结果为什么会和别人不一样？",
+      "gold": [
+        "3.3 关键业务流程设计"
+      ],
+      "keywords": [
+        "拉黑关系",
+        "过滤"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "用户登录时，后端用什么算法把明文密码和数据库里的哈希值做比对？",
+      "gold": [
+        "4.1.1 注册登录功能"
+      ],
+      "keywords": [
+        "BCrypt"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "签发的 JWT 令牌是用哪种算法生成的？",
+      "gold": [
+        "4.1.1 注册登录功能"
+      ],
+      "keywords": [
+        "HMAC-SHA256"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "前端把拿到的令牌存在浏览器的什么地方？",
+      "gold": [
+        "4.1.1 注册登录功能"
+      ],
+      "keywords": [
+        "LocalStorage"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "注册时如果用户名已经被占用，会抛出什么提示？",
+      "gold": [
+        "4.1.2 注册功能"
+      ],
+      "keywords": [
+        "用户名已存在"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "邮箱在查重之前做了哪些处理？",
+      "gold": [
+        "4.1.2 注册功能"
+      ],
+      "keywords": [
+        "trim",
+        "toLowerCase",
+        "Locale.ROOT"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "用户没有填昵称时，昵称会取什么值？",
+      "gold": [
+        "4.1.2 注册功能"
+      ],
+      "keywords": [
+        "nickname",
+        "isBlank",
+        "username"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "登录成功后，用户 ID 被写到了 Session 的哪个属性名里？",
+      "gold": [
+        "4.2 用户功能模块"
+      ],
+      "keywords": [
+        "SESSION_USER_ID"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "发帖时如果标签不为空，标签内容会以什么形式拼进送审文本？",
+      "gold": [
+        "4.2 用户功能模块"
+      ],
+      "keywords": [
+        "标签：",
+        "String.join"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "登录时用户名或密码错误会抛出什么提示？",
+      "gold": [
+        "4.2 用户功能模块"
+      ],
+      "keywords": [
+        "用户名或密码错误"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "管理员对帖子做通过或驳回操作时，最终会把帖子的状态设置成哪两个值？",
+      "gold": [
+        "4.3 管理员模块"
+      ],
+      "keywords": [
+        "APPROVED",
+        "REJECTED"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "如果调用 requireAdmin 时传入的 userId 是空的，会抛出什么状态码和提示语？",
+      "gold": [
+        "4.3 管理员模块"
+      ],
+      "keywords": [
+        "UNAUTHORIZED",
+        "请先登录"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "AI 审核链路需要在哪两类场景下验证返回状态和提示文案？",
+      "gold": [
+        "5.1 测试目的"
+      ],
+      "keywords": [
+        "通过与拦截",
+        "状态与提示文案"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "开发这个项目用的是哪个版本的 Java？",
+      "gold": [
+        "5.2.1 测试环境"
+      ],
+      "keywords": [
+        "Java 17"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "接口测试和并发请求模拟分别用什么工具？",
+      "gold": [
+        "5.2.1 测试环境"
+      ],
+      "keywords": [
+        "Postman",
+        "压力工具"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "这个系统用什么方法验证每个功能点的输入和输出是否符合预期？",
+      "gold": [
+        "5.2.2 测试方法"
+      ],
+      "keywords": [
+        "黑盒测试",
+        "输入-输出"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "跨模块业务链路是用哪种测试来验证的？",
+      "gold": [
+        "5.2.2 测试方法"
+      ],
+      "keywords": [
+        "场景测试",
+        "跨模块业务链路"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "功能调整后要确认既有能力没被破坏，应该做哪种测试？",
+      "gold": [
+        "5.2.2 测试方法"
+      ],
+      "keywords": [
+        "32回归测试",
+        "既有能力不受破坏"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "正常内容发帖后是什么状态，能在首页显示吗？",
+      "gold": [
+        "5.3.2 发帖与审核测试"
+      ],
+      "keywords": [
+        "APPROVED",
+        "首页显示"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "发帖被驳回时系统会提示什么内容？",
+      "gold": [
+        "5.3.2 发帖与审核测试"
+      ],
+      "keywords": [
+        "审核未通过。原因：[敏感词]"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "管理员能对帖子执行哪些操作，状态变更后前台显示会怎样？",
+      "gold": [
+        "5.3.2 发帖与审核测试"
+      ],
+      "keywords": [
+        "通过、驳回、删除",
+        "状态变更与前台显示一致"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "评论提交之后会经历什么流程，什么样的评论会被拦截？",
+      "gold": [
+        "5.3.3 评论、点赞与筛选测试"
+      ],
+      "keywords": [
+        "审核流程",
+        "合规则展示",
+        "不合规则拦截"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "点赞能不能取消，重复点赞会不会被算多次？",
+      "gold": [
+        "5.3.3 评论、点赞与筛选测试"
+      ],
+      "keywords": [
+        "点赞/取消点赞",
+        "不会重复累计"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "把某个作者拉黑之后，他的内容在我的视图里会怎样显示？",
+      "gold": [
+        "5.3.3 评论、点赞与筛选测试"
+      ],
+      "keywords": [
+        "拉黑功能生效",
+        "受限显示"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "在课程设计规模场景下，系统的平均响应时间表现如何？",
+      "gold": [
+        "5.4.1 核心接口响应测试"
+      ],
+      "keywords": [
+        "平均响应时间",
+        "可接受范围"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "帖子列表接口在冷热数据情况下能不能稳定返回？",
+      "gold": [
+        "5.4.1 核心接口响应测试"
+      ],
+      "keywords": [
+        "帖子列表接口",
+        "冷热数据",
+        "稳定返回"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "评论和点赞接口的波动情况怎么样？",
+      "gold": [
+        "5.4.1 核心接口响应测试"
+      ],
+      "keywords": [
+        "评论",
+        "点赞",
+        "波动较小"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "审核服务出现短时波动时，系统还能正常返回什么？",
+      "gold": [
+        "5.4.2 审核链路性能测试"
+      ],
+      "keywords": [
+        "清晰错误信息"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "测试时主要观察第三方审核接入的哪项指标和系统整体可用性？",
+      "gold": [
+        "5.4.2 审核链路性能测试"
+      ],
+      "keywords": [
+        "时延"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "审核服务波动时，哪些方面不会受到影响？",
+      "gold": [
+        "5.4.2 审核链路性能测试"
+      ],
+      "keywords": [
+        "会话管理",
+        "其他模块运行"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "没登录就去调用需要权限的接口，会收到什么状态码？",
+      "gold": [
+        "5.5.1 鉴权与越权测试"
+      ],
+      "keywords": [
+        "401"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "普通用户去访问 /api/admin/** 这类路径会得到什么结果？",
+      "gold": [
+        "5.5.1 鉴权与越权测试"
+      ],
+      "keywords": [
+        "权限错误",
+        "/api/admin/**"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "被限制不能发帖的人提交内容时，是在哪一层被拦下来的？",
+      "gold": [
+        "5.5.1 鉴权与越权测试"
+      ],
+      "keywords": [
+        "禁止发帖",
+        "后端拦截"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "多图上传超过上限时，系统会怎么处理？",
+      "gold": [
+        "5.5.2 输入校验测试"
+      ],
+      "keywords": [
+        "超过上限",
+        "明确提示"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "非法参数会不会造成数据库异常写入？",
+      "gold": [
+        "5.5.2 输入校验测试"
+      ],
+      "keywords": [
+        "非法参数",
+        "数据库异常写入"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "登录页上哪个入口确认是可用的？",
+      "gold": [
+        "5.6 兼容性与前端交互测试"
+      ],
+      "keywords": [
+        "返回首页"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "搜索输入框和搜索按钮的对齐情况怎么样？",
+      "gold": [
+        "5.6 兼容性与前端交互测试"
+      ],
+      "keywords": [
+        "搜索输入框",
+        "搜索按钮",
+        "对齐正确"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "审核流程能不能跑通，用户能不能快速看懂审核结论？",
+      "gold": [
+        "5.7 测试结果与分析"
+      ],
+      "keywords": [
+        "审核闭环流程可运行",
+        "提示文案统一",
+        "快速理解审核结论"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "系统在中等并发下表现如何，核心接口可用吗？",
+      "gold": [
+        "5.7 测试结果与分析"
+      ],
+      "keywords": [
+        "中等并发",
+        "运行稳定",
+        "核心接口具备可用性"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "后续优化方向里，违规识别和多模态审核分别要提升什么？",
+      "gold": [
+        "5.7 测试结果与分析"
+      ],
+      "keywords": [
+        "复杂语义、隐喻表达",
+        "多模态审核（图片/视频）",
+        "更细粒度的审计日志与监控指标"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "这套系统把人工审核工作量降低了多少？",
+      "gold": [
+        "6.1 总结"
+      ],
+      "keywords": [
+        "80%"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "违规内容识别准确率达到了什么水平？",
+      "gold": [
+        "6.1 总结"
+      ],
+      "keywords": [
+        "92.5%"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "系统用什么机制把高延迟的 AI 计算任务和低延迟的用户交互主业务流解耦？",
+      "gold": [
+        "6.1 总结"
+      ],
+      "keywords": [
+        "Java 高级异步并发机制",
+        "解耦"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "现在的 AI 文本审核引擎在识别哪些复杂语言现象时还有理论瓶颈？",
+      "gold": [
+        "6.2 展望"
+      ],
+      "keywords": [
+        "反讽",
+        "黑色幽默",
+        "隐蔽违规意图"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "系统目前采用的是什么架构，未来打算怎么重构核心模块？",
+      "gold": [
+        "6.2 展望"
+      ],
+      "keywords": [
+        "单体架构",
+        "微服务化",
+        "账号鉴权"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "未来计划用哪些工具实现业务模块的独立横向拓展和弹性资源扩容？",
+      "gold": [
+        "6.2 展望"
+      ],
+      "keywords": [
+        "Docker",
+        "Kubernetes",
+        "百万级"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "那篇讲跨平台移动应用测试脚本录制回放的论文发表在哪个期刊、哪一年、第几卷？",
+      "gold": [
+        "参考文献"
+      ],
+      "keywords": [
+        "软件学报",
+        "2025",
+        "36(12)"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "面向新一代神威超级计算机的 Julia 语言编译系统叫什么名字，发表在哪个期刊？",
+      "gold": [
+        "参考文献"
+      ],
+      "keywords": [
+        "swJulia",
+        "软件学报"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "北极星的年付套餐能谈到几折？一次性买三年有没有额外优惠？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星和Salesforce、HubSpot相比，在客户成功团队眼里各自的优缺点是什么？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星适合多少人的团队用？超过500人后会不会明显变慢或需要额外付费？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星母公司最近一轮融资是什么时候、金额多少、估值多少？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星有没有公开的客户案例，能说明某家公司上线后具体提升了多少续费率？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星支持私有化部署吗？如果我们要部署在自己的机房，报价大概是多少？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星的中国区代理商有哪些？通过代理商买和官网直接买价格差多少？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星有没有免费试用期？试用期结束后数据会被保留多久？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星的产品路线图里，未来12个月会推出哪些新功能？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星是否通过了SOC 2 Type II或ISO 27001认证？审计报告能提供给客户吗？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星被收购的传闻是真的吗？如果被收购，现有合同会怎么处理？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星的API调用配额用完后，超量部分怎么计费？有没有企业级不限量方案？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    }
+  ]
+}

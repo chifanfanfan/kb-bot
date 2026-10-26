@@ -1,0 +1,346 @@
+{
+  "description": "真实语料（本科毕业论文，已脱敏）的人工标注子集。gold 用小节标题，keywords 用于判定答案是否答对。",
+  "cases": [
+    {
+      "q": "这套系统把人工审核工作量降低了多少？违规内容识别准确率是多少？",
+      "gold": [
+        "6.1 总结"
+      ],
+      "keywords": [
+        "80%",
+        "92.5%"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "source": "human"
+    },
+    {
+      "q": "后端用什么框架、什么数据库？",
+      "gold": [
+        "6.1 总结"
+      ],
+      "keywords": [
+        "Spring Boot",
+        "MySQL"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "系统架构分成几层？",
+      "gold": [
+        "3.2 系统架构设计"
+      ],
+      "keywords": [
+        "四层"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "source": "human"
+    },
+    {
+      "q": "MyBatis-Plus 是怎么防住 SQL 注入的？",
+      "gold": [
+        "2.3.1 后端核心技术栈"
+      ],
+      "keywords": [
+        "参数预编译"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "AOP 在这个系统里承担了哪些职责？",
+      "gold": [
+        "2.3.1 后端核心技术栈"
+      ],
+      "keywords": [
+        "权限校验",
+        "日志"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "source": "human"
+    },
+    {
+      "q": "管理员能执行哪些核心操作？",
+      "gold": [
+        "2.2.2 需求分析"
+      ],
+      "keywords": [
+        "用户信息管理",
+        "审核规则配置"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "source": "human"
+    },
+    {
+      "q": "第三方审核服务抖动的时候，系统这边还能正常用吗？",
+      "gold": [
+        "5.4.2 审核链路性能测试"
+      ],
+      "keywords": [
+        "错误信息",
+        "容错"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "这篇论文的题目是什么？",
+      "gold": [
+        "正文"
+      ],
+      "keywords": [
+        "集成 AI 内容审核的社区论坛"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "作者是哪个学校的？",
+      "gold": [
+        "正文"
+      ],
+      "keywords": [
+        "东莞城市学院"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "作者毕业后去了哪家公司？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "source": "human"
+    },
+    {
+      "q": "这篇论文获得过什么奖项？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "source": "human"
+    },
+    {
+      "q": "系统上线后的真实用户量是多少？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "source": "human"
+    },
+    {
+      "q": "users 表的主键字段名和数据类型是什么？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "id",
+        "BIGINT"
+      ],
+      "refusal": false,
+      "tag": "table",
+      "source": "human"
+    },
+    {
+      "q": "posts 表里哪个字段存正文，类型是什么？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "content",
+        "TEXT"
+      ],
+      "refusal": false,
+      "tag": "table",
+      "source": "human"
+    },
+    {
+      "q": "数据库里存密码的字段叫什么，长度是多少？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "password_hash",
+        "120"
+      ],
+      "refusal": false,
+      "tag": "table",
+      "source": "human"
+    },
+    {
+      "q": "post_tags 关联表有哪两个字段？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "post_id",
+        "tag_id"
+      ],
+      "refusal": false,
+      "tag": "table",
+      "source": "human"
+    },
+    {
+      "q": "标签名最多支持多少字符？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "32"
+      ],
+      "refusal": false,
+      "tag": "table",
+      "source": "human"
+    },
+    {
+      "q": "评论表里审核状态字段叫什么名字？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "status"
+      ],
+      "refusal": false,
+      "tag": "table",
+      "source": "human"
+    },
+    {
+      "q": "审核不通过时系统会保存什么，为什么？",
+      "gold": [
+        "3.3 关键业务流程设计"
+      ],
+      "keywords": [
+        "拒绝状态",
+        "原因说明"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "source": "human"
+    },
+    {
+      "q": "点赞为什么要做成切换式而不是累加？",
+      "gold": [
+        "3.3 关键业务流程设计"
+      ],
+      "keywords": [
+        "重复累计",
+        "统计失真"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "source": "human"
+    },
+    {
+      "q": "同一套列表接口，为什么不同用户看到的内容不一样？",
+      "gold": [
+        "3.3 关键业务流程设计"
+      ],
+      "keywords": [
+        "拉黑"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "未登录的访客能看到哪些内容？",
+      "gold": [
+        "4.2 用户功能模块"
+      ],
+      "keywords": [
+        "浏览",
+        "已通过审核"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "发帖和评论这类生产行为，系统做了哪两层保护？",
+      "gold": [
+        "4.2 用户功能模块"
+      ],
+      "keywords": [
+        "登录鉴权",
+        "AI 审核"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "source": "human"
+    },
+    {
+      "q": "拉黑之后双方的内容会怎样？",
+      "gold": [
+        "4.2 用户功能模块"
+      ],
+      "keywords": [
+        "互相不可见"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "回归测试是用来干什么的？",
+      "gold": [
+        "5.2.2 测试方法"
+      ],
+      "keywords": [
+        "功能调整",
+        "既有能力"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "黑盒测试和场景测试分别验证什么？",
+      "gold": [
+        "5.2.2 测试方法"
+      ],
+      "keywords": [
+        "输入-输出",
+        "跨模块"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "source": "human"
+    },
+    {
+      "q": "目前的 AI 审核在哪些语言现象上容易判断不准？",
+      "gold": [
+        "6.2 展望"
+      ],
+      "keywords": [
+        "反讽",
+        "隐喻"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "评论审核和发帖审核的侧重点有什么不同？",
+      "gold": [
+        "3.3 关键业务流程设计"
+      ],
+      "keywords": [
+        "实时",
+        "误以为评论成功"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "source": "human"
+    }
+  ]
+}

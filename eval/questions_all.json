@@ -1,0 +1,3343 @@
+{
+  "cases": [
+    {
+      "q": "这套系统把人工审核工作量降低了多少？违规内容识别准确率是多少？",
+      "gold": [
+        "6.1 总结"
+      ],
+      "keywords": [
+        "80%",
+        "92.5%"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "source": "human"
+    },
+    {
+      "q": "后端用什么框架、什么数据库？",
+      "gold": [
+        "6.1 总结"
+      ],
+      "keywords": [
+        "Spring Boot",
+        "MySQL"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "系统架构分成几层？",
+      "gold": [
+        "3.2 系统架构设计"
+      ],
+      "keywords": [
+        "四层"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "source": "human"
+    },
+    {
+      "q": "MyBatis-Plus 是怎么防住 SQL 注入的？",
+      "gold": [
+        "2.3.1 后端核心技术栈"
+      ],
+      "keywords": [
+        "参数预编译"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "AOP 在这个系统里承担了哪些职责？",
+      "gold": [
+        "2.3.1 后端核心技术栈"
+      ],
+      "keywords": [
+        "权限校验",
+        "日志"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "source": "human"
+    },
+    {
+      "q": "管理员能执行哪些核心操作？",
+      "gold": [
+        "2.2.2 需求分析"
+      ],
+      "keywords": [
+        "用户信息管理",
+        "审核规则配置"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "source": "human"
+    },
+    {
+      "q": "第三方审核服务抖动的时候，系统这边还能正常用吗？",
+      "gold": [
+        "5.4.2 审核链路性能测试"
+      ],
+      "keywords": [
+        "错误信息",
+        "容错"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "这篇论文的题目是什么？",
+      "gold": [
+        "正文"
+      ],
+      "keywords": [
+        "集成 AI 内容审核的社区论坛"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "作者是哪个学校的？",
+      "gold": [
+        "正文"
+      ],
+      "keywords": [
+        "东莞城市学院"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "作者毕业后去了哪家公司？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "source": "human"
+    },
+    {
+      "q": "这篇论文获得过什么奖项？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "source": "human"
+    },
+    {
+      "q": "系统上线后的真实用户量是多少？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "source": "human"
+    },
+    {
+      "q": "users 表的主键字段名和数据类型是什么？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "id",
+        "BIGINT"
+      ],
+      "refusal": false,
+      "tag": "table",
+      "source": "human"
+    },
+    {
+      "q": "posts 表里哪个字段存正文，类型是什么？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "content",
+        "TEXT"
+      ],
+      "refusal": false,
+      "tag": "table",
+      "source": "human"
+    },
+    {
+      "q": "数据库里存密码的字段叫什么，长度是多少？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "password_hash",
+        "120"
+      ],
+      "refusal": false,
+      "tag": "table",
+      "source": "human"
+    },
+    {
+      "q": "post_tags 关联表有哪两个字段？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "post_id",
+        "tag_id"
+      ],
+      "refusal": false,
+      "tag": "table",
+      "source": "human"
+    },
+    {
+      "q": "标签名最多支持多少字符？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "32"
+      ],
+      "refusal": false,
+      "tag": "table",
+      "source": "human"
+    },
+    {
+      "q": "评论表里审核状态字段叫什么名字？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "status"
+      ],
+      "refusal": false,
+      "tag": "table",
+      "source": "human"
+    },
+    {
+      "q": "审核不通过时系统会保存什么，为什么？",
+      "gold": [
+        "3.3 关键业务流程设计"
+      ],
+      "keywords": [
+        "拒绝状态",
+        "原因说明"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "source": "human"
+    },
+    {
+      "q": "点赞为什么要做成切换式而不是累加？",
+      "gold": [
+        "3.3 关键业务流程设计"
+      ],
+      "keywords": [
+        "重复累计",
+        "统计失真"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "source": "human"
+    },
+    {
+      "q": "同一套列表接口，为什么不同用户看到的内容不一样？",
+      "gold": [
+        "3.3 关键业务流程设计"
+      ],
+      "keywords": [
+        "拉黑"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "未登录的访客能看到哪些内容？",
+      "gold": [
+        "4.2 用户功能模块"
+      ],
+      "keywords": [
+        "浏览"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "发帖和评论这类生产行为，系统做了哪两层保护？",
+      "gold": [
+        "4.2 用户功能模块"
+      ],
+      "keywords": [
+        "登录鉴权",
+        "AI 审核"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "source": "human"
+    },
+    {
+      "q": "拉黑之后双方的内容会怎样？",
+      "gold": [
+        "4.2 用户功能模块"
+      ],
+      "keywords": [
+        "互相不可见"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "回归测试是用来干什么的？",
+      "gold": [
+        "5.2.2 测试方法"
+      ],
+      "keywords": [
+        "功能调整",
+        "既有能力"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "黑盒测试和场景测试分别验证什么？",
+      "gold": [
+        "5.2.2 测试方法"
+      ],
+      "keywords": [
+        "输入-输出",
+        "跨模块"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "source": "human"
+    },
+    {
+      "q": "目前的 AI 审核在哪些语言现象上容易判断不准？",
+      "gold": [
+        "6.2 展望"
+      ],
+      "keywords": [
+        "反讽"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "source": "human"
+    },
+    {
+      "q": "评论审核和发帖审核的侧重点有什么不同？",
+      "gold": [
+        "3.3 关键业务流程设计"
+      ],
+      "keywords": [
+        "实时",
+        "误以为评论成功"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "source": "human"
+    },
+    {
+      "q": "这个社区论坛系统后端用的是什么框架？",
+      "gold": [
+        "ABSTRACT"
+      ],
+      "keywords": [
+        "SpringBoot"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "这个系统前端用的是哪套技术栈？",
+      "gold": [
+        "1.1研究背景与意义"
+      ],
+      "keywords": [
+        "Vue3",
+        "Element Plus"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "中小型社区论坛在运营中普遍面临的两大核心痛点是什么？",
+      "gold": [
+        "1.1研究背景与意义"
+      ],
+      "keywords": [
+        "人工审核",
+        "底层架构与功能设计相对单一"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "AI 审核模块为什么能迁移到其他中小型社交平台？",
+      "gold": [
+        "1.2 课题研究目的"
+      ],
+      "keywords": [
+        "解耦性",
+        "标准化接口规范",
+        "内容安全微服务组件"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "系统能自动识别并拦截哪些类型的内容？",
+      "gold": [
+        "1.2 课题研究目的"
+      ],
+      "keywords": [
+        "违规文本",
+        "图片内容",
+        "精准拦截"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "这个社区论坛系统给普通用户提供了哪些功能？",
+      "gold": [
+        "1.3 课题研究内容"
+      ],
+      "keywords": [
+        "注册",
+        "发帖",
+        "上传"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "管理员在系统里能进行哪些操作？",
+      "gold": [
+        "1.3 课题研究内容"
+      ],
+      "keywords": [
+        "用户",
+        "审核"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "系统层集成了什么机制来同时保证安全和性能？",
+      "gold": [
+        "1.3 课题研究内容"
+      ],
+      "keywords": [
+        "图文内容审核",
+        "异步调度机制"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "这篇论文一共分成几章，各章是按什么顺序组织的？",
+      "gold": [
+        "1.4 论文结构"
+      ],
+      "keywords": [
+        "六章",
+        "层层递进"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "系统分析部分是从哪三个方面展开的？",
+      "gold": [
+        "1.4 论文结构"
+      ],
+      "keywords": [
+        "可行性",
+        "需求",
+        "相关技术"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "论文中功能结构与数据库设计安排在哪一章，核心模块的实现又安排在哪一章？",
+      "gold": [
+        "1.4 论文结构"
+      ],
+      "keywords": [
+        "第三章",
+        "第四章"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "这个系统后端用的是什么技术生态？",
+      "gold": [
+        "2.1.1 技术可行性"
+      ],
+      "keywords": [
+        "Java",
+        "Spring Boot"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "数据层选用了哪种数据库？",
+      "gold": [
+        "2.1.1 技术可行性"
+      ],
+      "keywords": [
+        "MySQL"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "为什么说引入自动化审核模块在经济上划算？",
+      "gold": [
+        "2.1.2 经济可行性"
+      ],
+      "keywords": [
+        "成本"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "软件方面主要用什么，需要买商业授权吗？",
+      "gold": [
+        "2.1.2 经济可行性"
+      ],
+      "keywords": [
+        "开源框架",
+        "数据库",
+        "无需高额商业授权费用"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "普通用户通过什么方式访问这个系统？",
+      "gold": [
+        "2.1.3 操作可行性"
+      ],
+      "keywords": [
+        "浏览器"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "系统维护通常要做哪些工作？",
+      "gold": [
+        "2.1.3 操作可行性"
+      ],
+      "keywords": [
+        "数据备份",
+        "日志审计",
+        "接口监控"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "用户密码在系统里是怎么存的？",
+      "gold": [
+        "2.2.1 合规"
+      ],
+      "keywords": [
+        "BCrypt",
+        "加盐哈希"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "日志至少要保留多长时间？",
+      "gold": [
+        "2.2.1 合规"
+      ],
+      "keywords": [
+        "6 个月"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "违规内容处置的流程分哪几步？",
+      "gold": [
+        "2.2.1 合规"
+      ],
+      "keywords": [
+        "实时拦截",
+        "定时清理",
+        "申诉复核"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "用户发帖后，后端在返回响应之后还会在后台静默触发什么？",
+      "gold": [
+        "2.2.2 需求分析"
+      ],
+      "keywords": [
+        "AI 审核工作流",
+        "静默触发"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "AI 引擎研判后，内容状态机会根据什么自动更新为通过、拦截或进入人工复审池？",
+      "gold": [
+        "2.2.2 需求分析"
+      ],
+      "keywords": [
+        "置信度阈值",
+        "人工复审池"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "未登录访客在系统里能执行哪些只读操作？",
+      "gold": [
+        "2.2.2 需求分析"
+      ],
+      "keywords": [
+        "浏览公开帖子",
+        "查看评论"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "后端业务控制层和数据访问层是用什么语言和框架搭建的？",
+      "gold": [
+        "2.3 相关技术介绍"
+      ],
+      "keywords": [
+        "Java",
+        "Spring Boot"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "Spring Boot 靠什么机制根据类路径下的依赖库自动推断并初始化组件？",
+      "gold": [
+        "2.3 相关技术介绍"
+      ],
+      "keywords": [
+        "自动配置",
+        "Auto-configuration",
+        "Classpath"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "系统在架构上用了 Spring 的哪两大核心机制？",
+      "gold": [
+        "2.3.1 后端核心技术栈"
+      ],
+      "keywords": [
+        "控制反转（IoC）",
+        "面向切面编程（AOP）"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "用户权限校验、全局日志、接口耗时统计这些横切关注点是被什么技术从核心业务代码里剥离出去的？",
+      "gold": [
+        "2.3.1 后端核心技术栈"
+      ],
+      "keywords": [
+        "AOP",
+        "横切关注点"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "数据持久层集成的框架靠什么底层机制来防止 SQL 注入？",
+      "gold": [
+        "2.3.1 后端核心技术栈"
+      ],
+      "keywords": [
+        "MyBatis-Plus",
+        "参数预编译"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "前端界面是用哪些技术构建的？",
+      "gold": [
+        "2.3.2 前端核心技术栈"
+      ],
+      "keywords": [
+        "HTML5",
+        "CSS3",
+        "Vue3"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "上传图片时用什么组件做多格式校验和批量上传预览？",
+      "gold": [
+        "2.3.2 前端核心技术栈"
+      ],
+      "keywords": [
+        "Element Plus",
+        "上传组件"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "捕获到异步异常后，异常帖子会被标记成什么状态？",
+      "gold": [
+        "2.3.3 异常处理与容错机制"
+      ],
+      "keywords": [
+        "人工复审"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "系统在捕获异步异常后除了触发降级策略，还会持久化什么？",
+      "gold": [
+        "2.3.3 异常处理与容错机制"
+      ],
+      "keywords": [
+        "堆栈轨迹"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "未登录的用户在社区里能浏览什么样的帖子？",
+      "gold": [
+        "3.1 功能设计"
+      ],
+      "keywords": [
+        "未登录用户",
+        "已通过审核"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "自动审核和人工治理之间是什么关系？",
+      "gold": [
+        "3.1 功能设计"
+      ],
+      "keywords": [
+        "机器优先",
+        "人工兜底",
+        "治理闭环"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "用户请求进来后，系统在哪一层完成身份鉴权和请求数据格式转换？",
+      "gold": [
+        "3.2 系统架构设计"
+      ],
+      "keywords": [
+        "控制层",
+        "请求身份鉴权",
+        "请求数据格式转换"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "内容发布时，系统通过什么机制触发 AI 审核流程？",
+      "gold": [
+        "3.2 系统架构设计"
+      ],
+      "keywords": [
+        "发布订阅机制",
+        "AI 审核流程",
+        "审核任务"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "业务逻辑层封装了哪些核心业务规则？",
+      "gold": [
+        "3.2 系统架构设计"
+      ],
+      "keywords": [
+        "积分结算",
+        "帖子状态流转"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "密码在用户表里是怎么存的？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "哈希",
+        "明文"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "帖子表的主键是什么，又是通过哪个字段和用户实体关联的？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "帖子编号",
+        "用户编号"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "系统用的数据库引擎是什么，表结构规范化遵循第几范式？",
+      "gold": [
+        "3.3 数据库设计"
+      ],
+      "keywords": [
+        "MySQL",
+        "第三范式（3NF）"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "发帖时如果审核没通过，系统会保存什么，方便用户理解并修改？",
+      "gold": [
+        "3.3 关键业务流程设计"
+      ],
+      "keywords": [
+        "拒绝状态",
+        "原因说明"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "点赞为什么要用切换式逻辑？",
+      "gold": [
+        "3.3 关键业务流程设计"
+      ],
+      "keywords": [
+        "重复累计",
+        "统计失真"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "已登录用户看到的列表结果为什么会和别人不一样？",
+      "gold": [
+        "3.3 关键业务流程设计"
+      ],
+      "keywords": [
+        "拉黑关系",
+        "过滤"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "用户登录时，后端用什么算法把明文密码和数据库里的哈希值做比对？",
+      "gold": [
+        "4.1.1 注册登录功能"
+      ],
+      "keywords": [
+        "BCrypt"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "签发的 JWT 令牌是用哪种算法生成的？",
+      "gold": [
+        "4.1.1 注册登录功能"
+      ],
+      "keywords": [
+        "HMAC-SHA256"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "前端把拿到的令牌存在浏览器的什么地方？",
+      "gold": [
+        "4.1.1 注册登录功能"
+      ],
+      "keywords": [
+        "LocalStorage"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "注册时如果用户名已经被占用，会抛出什么提示？",
+      "gold": [
+        "4.1.2 注册功能"
+      ],
+      "keywords": [
+        "用户名已存在"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "用户没有填昵称时，昵称会取什么值？",
+      "gold": [
+        "4.1.2 注册功能"
+      ],
+      "keywords": [
+        "用户名"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "登录成功后，用户 ID 被写到了 Session 的哪个属性名里？",
+      "gold": [
+        "4.2 用户功能模块"
+      ],
+      "keywords": [
+        "SESSION_USER_ID"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "登录时用户名或密码错误会抛出什么提示？",
+      "gold": [
+        "4.2 用户功能模块"
+      ],
+      "keywords": [
+        "用户名或密码错误"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "管理员对帖子做通过或驳回操作时，最终会把帖子的状态设置成哪两个值？",
+      "gold": [
+        "4.3 管理员模块"
+      ],
+      "keywords": [
+        "APPROVED",
+        "REJECTED"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "如果调用 requireAdmin 时传入的 userId 是空的，会抛出什么状态码和提示语？",
+      "gold": [
+        "4.3 管理员模块"
+      ],
+      "keywords": [
+        "UNAUTHORIZED",
+        "请先登录"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "AI 审核链路需要在哪两类场景下验证返回状态和提示文案？",
+      "gold": [
+        "5.1 测试目的"
+      ],
+      "keywords": [
+        "通过与拦截",
+        "状态与提示文案"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "开发这个项目用的是哪个版本的 Java？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "numeric",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "接口测试和并发请求模拟分别用什么工具？",
+      "gold": [
+        "5.2.1 测试环境"
+      ],
+      "keywords": [
+        "Postman",
+        "压力工具"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "这个系统用什么方法验证每个功能点的输入和输出是否符合预期？",
+      "gold": [
+        "5.2.2 测试方法"
+      ],
+      "keywords": [
+        "黑盒测试",
+        "输入-输出"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "跨模块业务链路是用哪种测试来验证的？",
+      "gold": [
+        "5.2.2 测试方法"
+      ],
+      "keywords": [
+        "场景测试",
+        "跨模块业务链路"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "功能调整后要确认既有能力没被破坏，应该做哪种测试？",
+      "gold": [
+        "5.2.2 测试方法"
+      ],
+      "keywords": [
+        "回归测试",
+        "既有能力不受破坏"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "正常内容发帖后是什么状态，能在首页显示吗？",
+      "gold": [
+        "5.3.2 发帖与审核测试"
+      ],
+      "keywords": [
+        "APPROVED",
+        "首页显示"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "发帖被驳回时系统会提示什么内容？",
+      "gold": [
+        "5.3.2 发帖与审核测试"
+      ],
+      "keywords": [
+        "审核未通过。原因：[敏感词]"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "管理员能对帖子执行哪些操作，状态变更后前台显示会怎样？",
+      "gold": [
+        "5.3.2 发帖与审核测试"
+      ],
+      "keywords": [
+        "通过、驳回、删除",
+        "状态变更与前台显示一致"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "评论提交之后会经历什么流程，什么样的评论会被拦截？",
+      "gold": [
+        "5.3.3 评论、点赞与筛选测试"
+      ],
+      "keywords": [
+        "审核流程",
+        "合规则展示",
+        "不合规则拦截"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "点赞能不能取消，重复点赞会不会被算多次？",
+      "gold": [
+        "5.3.3 评论、点赞与筛选测试"
+      ],
+      "keywords": [
+        "点赞/取消点赞",
+        "不会重复累计"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "把某个作者拉黑之后，他的内容在我的视图里会怎样显示？",
+      "gold": [
+        "5.3.3 评论、点赞与筛选测试"
+      ],
+      "keywords": [
+        "拉黑功能生效",
+        "受限显示"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "在课程设计规模场景下，系统的平均响应时间表现如何？",
+      "gold": [
+        "5.4.1 核心接口响应测试"
+      ],
+      "keywords": [
+        "平均响应时间",
+        "可接受范围"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "帖子列表接口在冷热数据情况下能不能稳定返回？",
+      "gold": [
+        "5.4.1 核心接口响应测试"
+      ],
+      "keywords": [
+        "帖子列表接口",
+        "冷热数据",
+        "稳定返回"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "评论和点赞接口的波动情况怎么样？",
+      "gold": [
+        "5.4.1 核心接口响应测试"
+      ],
+      "keywords": [
+        "评论",
+        "点赞",
+        "波动较小"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "审核服务出现短时波动时，系统还能正常返回什么？",
+      "gold": [
+        "5.4.2 审核链路性能测试"
+      ],
+      "keywords": [
+        "清晰错误信息"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "测试时主要观察第三方审核接入的哪项指标和系统整体可用性？",
+      "gold": [
+        "5.4.2 审核链路性能测试"
+      ],
+      "keywords": [
+        "时延"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "审核服务波动时，哪些方面不会受到影响？",
+      "gold": [
+        "5.4.2 审核链路性能测试"
+      ],
+      "keywords": [
+        "会话管理",
+        "其他模块运行"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "没登录就去调用需要权限的接口，会收到什么状态码？",
+      "gold": [
+        "5.5.1 鉴权与越权测试"
+      ],
+      "keywords": [
+        "401"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "普通用户去访问 /api/admin/** 这类路径会得到什么结果？",
+      "gold": [
+        "5.5.1 鉴权与越权测试"
+      ],
+      "keywords": [
+        "权限错误",
+        "/api/admin/**"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "被限制不能发帖的人提交内容时，是在哪一层被拦下来的？",
+      "gold": [
+        "5.5.1 鉴权与越权测试"
+      ],
+      "keywords": [
+        "禁止发帖",
+        "后端拦截"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "多图上传超过上限时，系统会怎么处理？",
+      "gold": [
+        "5.5.2 输入校验测试"
+      ],
+      "keywords": [
+        "超过上限",
+        "明确提示"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "非法参数会不会造成数据库异常写入？",
+      "gold": [
+        "5.5.2 输入校验测试"
+      ],
+      "keywords": [
+        "非法参数",
+        "数据库异常写入"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "登录页上哪个入口确认是可用的？",
+      "gold": [
+        "5.6 兼容性与前端交互测试"
+      ],
+      "keywords": [
+        "返回首页"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "搜索输入框和搜索按钮的对齐情况怎么样？",
+      "gold": [
+        "5.6 兼容性与前端交互测试"
+      ],
+      "keywords": [
+        "搜索输入框",
+        "搜索按钮",
+        "对齐正确"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "审核流程能不能跑通，用户能不能快速看懂审核结论？",
+      "gold": [
+        "5.7 测试结果与分析"
+      ],
+      "keywords": [
+        "审核闭环流程可运行",
+        "提示文案统一",
+        "快速理解审核结论"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "系统在中等并发下表现如何，核心接口可用吗？",
+      "gold": [
+        "5.7 测试结果与分析"
+      ],
+      "keywords": [
+        "中等并发",
+        "运行稳定",
+        "核心接口具备可用性"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "后续优化方向里，违规识别和多模态审核分别要提升什么？",
+      "gold": [
+        "5.7 测试结果与分析"
+      ],
+      "keywords": [
+        "复杂语义",
+        "多模态审核"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "这套系统把人工审核工作量降低了多少？",
+      "gold": [
+        "6.1 总结"
+      ],
+      "keywords": [
+        "80%"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "违规内容识别准确率达到了什么水平？",
+      "gold": [
+        "6.1 总结"
+      ],
+      "keywords": [
+        "92.5%"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "系统用什么机制把高延迟的 AI 计算任务和低延迟的用户交互主业务流解耦？",
+      "gold": [
+        "6.1 总结"
+      ],
+      "keywords": [
+        "Java 高级异步并发机制",
+        "解耦"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "现在的 AI 文本审核引擎在识别哪些复杂语言现象时还有理论瓶颈？",
+      "gold": [
+        "6.2 展望"
+      ],
+      "keywords": [
+        "反讽",
+        "黑色幽默",
+        "隐蔽违规意图"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "系统目前采用的是什么架构，未来打算怎么重构核心模块？",
+      "gold": [
+        "6.2 展望"
+      ],
+      "keywords": [
+        "单体架构",
+        "微服务化",
+        "账号鉴权"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "未来计划用哪些工具实现业务模块的独立横向拓展和弹性资源扩容？",
+      "gold": [
+        "6.2 展望"
+      ],
+      "keywords": [
+        "Docker",
+        "Kubernetes"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "那篇讲跨平台移动应用测试脚本录制回放的论文发表在哪个期刊、哪一年、第几卷？",
+      "gold": [
+        "参考文献"
+      ],
+      "keywords": [
+        "软件学报",
+        "2025"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "面向新一代神威超级计算机的 Julia 语言编译系统叫什么名字，发表在哪个期刊？",
+      "gold": [
+        "参考文献"
+      ],
+      "keywords": [
+        "swJulia",
+        "软件学报"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "毕业论文_脱敏.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "北极星的年付套餐能谈到几折？一次性买三年有没有额外优惠？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星和Salesforce、HubSpot相比，在客户成功团队眼里各自的优缺点是什么？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星母公司最近一轮融资是什么时候、金额多少、估值多少？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星有没有公开的客户案例，能说明某家公司上线后具体提升了多少续费率？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星支持私有化部署吗？如果我们要部署在自己的机房，报价大概是多少？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星的中国区代理商有哪些？通过代理商买和官网直接买价格差多少？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星有没有免费试用期？试用期结束后数据会被保留多久？",
+      "gold": [
+        "1.3 退款与试用"
+      ],
+      "keywords": [
+        "30 天"
+      ],
+      "refusal": false,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星的产品路线图里，未来12个月会推出哪些新功能？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星是否通过了SOC 2 Type II或ISO 27001认证？审计报告能提供给客户吗？",
+      "gold": [
+        "3.1 合规认证"
+      ],
+      "keywords": [
+        "ISO 27001",
+        "SOC 2"
+      ],
+      "refusal": false,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星被收购的传闻是真的吗？如果被收购，现有合同会怎么处理？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星的API调用配额用完后，超量部分怎么计费？有没有企业级不限量方案？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星 Pro 年付价格是多少？起售多少席位？",
+      "gold": [
+        "1.2 版本与定价"
+      ],
+      "keywords": [
+        "1990",
+        "20"
+      ],
+      "refusal": false,
+      "tag": "numeric"
+    },
+    {
+      "q": "月付订单多久内可以退款？",
+      "gold": [
+        "1.3 退款与试用"
+      ],
+      "keywords": [
+        "14"
+      ],
+      "refusal": false,
+      "tag": "numeric"
+    },
+    {
+      "q": "年付订单的退款窗口是几天？",
+      "gold": [
+        "1.3 退款与试用"
+      ],
+      "keywords": [
+        "7"
+      ],
+      "refusal": false,
+      "tag": "numeric"
+    },
+    {
+      "q": "退款多久能到账？",
+      "gold": [
+        "第3章 退款处理流程"
+      ],
+      "keywords": [
+        "10 个工作日",
+        "5 个工作日"
+      ],
+      "refusal": false,
+      "tag": "multi-hop"
+    },
+    {
+      "q": "服务中断最多赔多少？",
+      "gold": [
+        "第5章 违约责任"
+      ],
+      "keywords": [
+        "50%"
+      ],
+      "refusal": false,
+      "tag": "numeric"
+    },
+    {
+      "q": "SLA 低于 99.5% 补偿多少？",
+      "gold": [
+        "1.4 服务等级协议"
+      ],
+      "keywords": [
+        "30%"
+      ],
+      "refusal": false,
+      "tag": "numeric"
+    },
+    {
+      "q": "P2 级故障多久响应？",
+      "gold": [
+        "1.5 技术支持"
+      ],
+      "keywords": [
+        "2 小时"
+      ],
+      "refusal": false,
+      "tag": "numeric"
+    },
+    {
+      "q": "单文件上传上限是多少？",
+      "gold": [
+        "1.7 配额与限制"
+      ],
+      "keywords": [
+        "100 MB"
+      ],
+      "refusal": false,
+      "tag": "numeric"
+    },
+    {
+      "q": "数据备份保留多久？",
+      "gold": [
+        "1.6 数据安全"
+      ],
+      "keywords": [
+        "30 天"
+      ],
+      "refusal": false,
+      "tag": "numeric"
+    },
+    {
+      "q": "迁移工具每分钟能处理多少篇文档？",
+      "gold": [
+        "2.1 实施与迁移指南"
+      ],
+      "keywords": [
+        "200"
+      ],
+      "refusal": false,
+      "tag": "numeric"
+    },
+    {
+      "q": "保密义务的期限是多久？",
+      "gold": [
+        "第4章 数据所有权与保密"
+      ],
+      "keywords": [
+        "3 年"
+      ],
+      "refusal": false,
+      "tag": "numeric"
+    },
+    {
+      "q": "多久不登录会被回收席位？",
+      "gold": [
+        "第2章 服务开通与终止"
+      ],
+      "keywords": [
+        "90 天"
+      ],
+      "refusal": false,
+      "tag": "numeric"
+    },
+    {
+      "q": "条款变更要提前多久通知？",
+      "gold": [
+        "第6章 条款变更与通知"
+      ],
+      "keywords": [
+        "30 天"
+      ],
+      "refusal": false,
+      "tag": "numeric"
+    },
+    {
+      "q": "发票多久能开出来？",
+      "gold": [
+        "1.8 常见问题"
+      ],
+      "keywords": [
+        "3 个工作日"
+      ],
+      "refusal": false,
+      "tag": "numeric"
+    },
+    {
+      "q": "能退钱吗，多久之内？",
+      "gold": [
+        "1.3 退款与试用"
+      ],
+      "keywords": [
+        "14"
+      ],
+      "refusal": false,
+      "tag": "paraphrase"
+    },
+    {
+      "q": "你们会把我的数据拿去训练模型吗？",
+      "gold": [
+        "第4章 数据所有权与保密"
+      ],
+      "keywords": [
+        "不得"
+      ],
+      "refusal": false,
+      "tag": "paraphrase"
+    },
+    {
+      "q": "默认并发会话数是多少？能扩到多少？",
+      "gold": [
+        "1.7 配额与限制"
+      ],
+      "keywords": [
+        "50",
+        "200"
+      ],
+      "refusal": false,
+      "tag": "numeric"
+    },
+    {
+      "q": "支持私有化部署吗？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent"
+    },
+    {
+      "q": "你们的 CEO 是谁？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent"
+    },
+    {
+      "q": "有没有 iOS 客户端？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent"
+    },
+    {
+      "q": "接口鉴权用的 Token 在哪里生成，有效期是多久？",
+      "gold": [
+        "1.1 认证与鉴权"
+      ],
+      "keywords": [
+        "开发者设置",
+        "90 天"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星API接口文档.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "Token 快过期时会提前多久收到提醒，续期后旧 Token 还能用多久？",
+      "gold": [
+        "1.1 认证与鉴权"
+      ],
+      "keywords": [
+        "7 天",
+        "24 小时"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星API接口文档.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "一个 Token 能不能同时调用多个工作空间的接口，跨空间调用会怎样？",
+      "gold": [
+        "1.1 认证与鉴权"
+      ],
+      "keywords": [
+        "绑定一个工作空间",
+        "403"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星API接口文档.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "接口请求体用什么格式，字符编码是什么？",
+      "gold": [
+        "1.2 请求与响应格式"
+      ],
+      "keywords": [
+        "JSON",
+        "UTF-8"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星API接口文档.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "调用成功后返回的状态码是多少，响应体里有哪些字段？",
+      "gold": [
+        "1.2 请求与响应格式"
+      ],
+      "keywords": [
+        "200",
+        "request_id",
+        "data"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星API接口文档.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "时间字段采用什么格式，时区是哪个？",
+      "gold": [
+        "1.2 请求与响应格式"
+      ],
+      "keywords": [
+        "ISO 8601",
+        "UTC"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星API接口文档.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "默认限流每分钟最多多少次？",
+      "gold": [
+        "1.3 限流与配额"
+      ],
+      "keywords": [
+        "1000 次"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星API接口文档.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "请求超出限流时返回什么状态码，响应头里哪个字段给出恢复时间戳？",
+      "gold": [
+        "1.3 限流与配额"
+      ],
+      "keywords": [
+        "429",
+        "X-RateLimit-Reset"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星API接口文档.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "批量导入接口的限流和默认限流有什么不同？",
+      "gold": [
+        "1.3 限流与配额"
+      ],
+      "keywords": [
+        "单独限流",
+        "20 次"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星API接口文档.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "列表接口每页最多能返回多少条？",
+      "gold": [
+        "1.4 分页与批量"
+      ],
+      "keywords": [
+        "200 条"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星API接口文档.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "批量写入一次最多能提交多少条，单条记录大小上限是多少？",
+      "gold": [
+        "1.4 分页与批量"
+      ],
+      "keywords": [
+        "500 条",
+        "1 MB"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星API接口文档.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "cursor 字符串能不能自己解析，或者拿到别的接口去用？",
+      "gold": [
+        "1.4 分页与批量"
+      ],
+      "keywords": [
+        "不透明字符串",
+        "不要解析",
+        "不要跨接口复用"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星API接口文档.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "回调失败后最多会重试几次？",
+      "gold": [
+        "1.6 Webhook 回调"
+      ],
+      "keywords": [
+        "5 次"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星API接口文档.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "回调请求的签名头叫什么名字，用什么算法计算？",
+      "gold": [
+        "1.6 Webhook 回调"
+      ],
+      "keywords": [
+        "X-Signature",
+        "HMAC-SHA256"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星API接口文档.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "重试间隔里，第三次和第五次分别等多久？",
+      "gold": [
+        "1.6 Webhook 回调"
+      ],
+      "keywords": [
+        "2 分钟",
+        "30 分钟"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星API接口文档.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "北极星 Pro 产品手册的版本号是多少？",
+      "gold": [
+        "正文"
+      ],
+      "keywords": [
+        "3.8.2"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "这份产品手册的更新日期是哪天？",
+      "gold": [
+        "正文"
+      ],
+      "keywords": [
+        "2026-06-30"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "这份北极星 Pro 产品手册的密级标注是什么？",
+      "gold": [
+        "正文"
+      ],
+      "keywords": [
+        "内部资料"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "北极星 Pro 是什么时候正式发布的？",
+      "gold": [
+        "1.1 产品概述"
+      ],
+      "keywords": [
+        "2024 年 3 月"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "北极星 Pro 现在稳定版本号是多少？",
+      "gold": [
+        "1.1 产品概述"
+      ],
+      "keywords": [
+        "3.8.2"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "免费版本北极星 Lite 包含哪些功能？",
+      "gold": [
+        "1.1 产品概述"
+      ],
+      "keywords": [
+        "文档协同",
+        "基础检索"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "北极星 Pro 最少要买多少个席位？",
+      "gold": [
+        "1.2 版本与定价"
+      ],
+      "keywords": [
+        "20 个席位"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "北极星 Lite 免费版最多能支持几个用户，单库容量上限是多少？",
+      "gold": [
+        "1.2 版本与定价"
+      ],
+      "keywords": [
+        "5 个用户",
+        "2 GB"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "从 Lite 升级到 Pro 时，差价怎么算，会不会收升级手续费？",
+      "gold": [
+        "1.2 版本与定价"
+      ],
+      "keywords": [
+        "按剩余天数折算差价",
+        "不额外收取升级手续费"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "新客户能免费试用多久，试用期间要付费吗？",
+      "gold": [
+        "1.3 退款与试用"
+      ],
+      "keywords": [
+        "30 天",
+        "不收取任何费用"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "按月付费的订单想退款，最晚多少天内可以申请，退款金额怎么算？",
+      "gold": [
+        "1.3 退款与试用"
+      ],
+      "keywords": [
+        "14 天",
+        "未使用天数"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "年付订单过了退款期限还能怎么处理？",
+      "gold": [
+        "1.3 退款与试用"
+      ],
+      "keywords": [
+        "7 天",
+        "转为月付"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "北极星 Pro 承诺的月度服务可用性最低是多少？",
+      "gold": [
+        "1.4 服务等级协议"
+      ],
+      "keywords": [
+        "99.9%"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "如果某月可用性掉到 99.7%，能拿到多少补偿？",
+      "gold": [
+        "1.4 服务等级协议"
+      ],
+      "keywords": [
+        "10%",
+        "服务代金券"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "故障发生后多久内要提交工单申请补偿，否则就作废了？",
+      "gold": [
+        "1.4 服务等级协议"
+      ],
+      "keywords": [
+        "30 天",
+        "工单"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "系统完全不可用的时候，多久会有人第一次回复我？",
+      "gold": [
+        "1.5 技术支持"
+      ],
+      "keywords": [
+        "30 分钟",
+        "7×24 小时"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "部分功能出问题的话，周末能等到响应吗？",
+      "gold": [
+        "1.5 技术支持"
+      ],
+      "keywords": [
+        "工作日 9:00-21:00",
+        "2 小时"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "只是使用上的疑问，最晚多久能得到回复？",
+      "gold": [
+        "1.5 技术支持"
+      ],
+      "keywords": [
+        "1 个工作日",
+        "P3 级咨询"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "数据在传输和存储时分别用了什么加密方式？",
+      "gold": [
+        "1.6 数据安全"
+      ],
+      "keywords": [
+        "TLS 1.3",
+        "AES-256"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "备份文件能保留多久，可以恢复到什么时间范围？",
+      "gold": [
+        "1.6 数据安全"
+      ],
+      "keywords": [
+        "30 天",
+        "最近 7 天内任意时刻"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "注销账号后数据多久会被彻底清除，会提供什么凭证？",
+      "gold": [
+        "1.6 数据安全"
+      ],
+      "keywords": [
+        "7 天内",
+        "物理清除",
+        "销毁证明"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "单个文件最大能上传多大？",
+      "gold": [
+        "1.7 配额与限制"
+      ],
+      "keywords": [
+        "100 MB"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "Pro 版本默认能同时跑多少个会话，最多又能扩到多少？",
+      "gold": [
+        "1.7 配额与限制"
+      ],
+      "keywords": [
+        "50",
+        "200"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "开放 API 调用太频繁会被返回什么状态码？",
+      "gold": [
+        "1.7 配额与限制"
+      ],
+      "keywords": [
+        "429",
+        "每分钟 1000 次"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "Pro 版本能不能只买其中几个模块？",
+      "gold": [
+        "1.8 常见问题"
+      ],
+      "keywords": [
+        "不能",
+        "整套模块",
+        "不支持拆分"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "增加席位什么时候生效，怎么计费？",
+      "gold": [
+        "1.8 常见问题"
+      ],
+      "keywords": [
+        "立即生效",
+        "按天计费"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "开票要等多久，能开哪几种发票？",
+      "gold": [
+        "1.8 常见问题"
+      ],
+      "keywords": [
+        "3 个工作日",
+        "增值税普通发票",
+        "专用发票"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "整个实施周期一般要多久？",
+      "gold": [
+        "2.1 实施与迁移指南"
+      ],
+      "keywords": [
+        "10 到 15个工作日"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "单个迁移任务每分钟大概能处理多少篇文档？",
+      "gold": [
+        "2.1 实施与迁移指南"
+      ],
+      "keywords": [
+        "200篇文档"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "验收培训结束后，观察期有多长，期间实施顾问多久提供一次运行报告？",
+      "gold": [
+        "2.1 实施与迁移指南"
+      ],
+      "keywords": [
+        "两周",
+        "每周提供一次运行报告"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "50 个席位按年付算下来一年要多少钱？",
+      "gold": [
+        "2.2 计费示例"
+      ],
+      "keywords": [
+        "50",
+        "1990",
+        "99,500"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "年付客户第 10 个月想加 10 个席位，费用怎么算？",
+      "gold": [
+        "2.2 计费示例"
+      ],
+      "keywords": [
+        "10 个席位",
+        "剩余 2个月",
+        "折算"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "年付客户第 5 天申请退款能退多少？",
+      "gold": [
+        "2.2 计费示例"
+      ],
+      "keywords": [
+        "7 天窗口",
+        "98%",
+        "5天"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星Pro产品手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "平台通过了哪些信息安全和隐私管理方面的认证？",
+      "gold": [
+        "3.1 合规认证"
+      ],
+      "keywords": [
+        "ISO 27001",
+        "ISO 27701",
+        "等保三级"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星安全合规白皮书.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "SOC 2 Type II 报告多久更新一次？",
+      "gold": [
+        "3.1 合规认证"
+      ],
+      "keywords": [
+        "每年更新"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星安全合规白皮书.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "认证范围覆盖哪些环境，又不包含哪个环境？",
+      "gold": [
+        "3.1 合规认证"
+      ],
+      "keywords": [
+        "生产环境",
+        "灾备环境",
+        "测试环境"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星安全合规白皮书.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "哪些级别的数据导出前必须单独审批？",
+      "gold": [
+        "3.2 数据分类分级"
+      ],
+      "keywords": [
+        "机密及以上",
+        "单独审批"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星安全合规白皮书.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "客户数据默认属于什么级别，由谁来调整？",
+      "gold": [
+        "3.2 数据分类分级"
+      ],
+      "keywords": [
+        "机密",
+        "客户自行调整"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星安全合规白皮书.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "传输加密用的是什么协议版本？",
+      "gold": [
+        "3.3 加密与密钥"
+      ],
+      "keywords": [
+        "TLS 1.3"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星安全合规白皮书.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "密钥多久轮换一次，轮换时会影响业务吗？",
+      "gold": [
+        "3.3 加密与密钥"
+      ],
+      "keywords": [
+        "180 天",
+        "无感"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星安全合规白皮书.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "客户自带密钥时，密钥托管在哪里，服务商能看到明文吗？",
+      "gold": [
+        "3.3 加密与密钥"
+      ],
+      "keywords": [
+        "BYOK",
+        "客户 KMS",
+        "无法读取明文"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星安全合规白皮书.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "角色继承最多支持几层？",
+      "gold": [
+        "3.4 访问控制"
+      ],
+      "keywords": [
+        "5 层"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星安全合规白皮书.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "删除库、导出全量数据这类高危操作需要经过什么流程？",
+      "gold": [
+        "3.4 访问控制"
+      ],
+      "keywords": [
+        "二次确认",
+        "审批流"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星安全合规白皮书.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "管理操作的审计日志保留多久，能不能被改动？",
+      "gold": [
+        "3.4 访问控制"
+      ],
+      "keywords": [
+        "180 天",
+        "不可篡改"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星安全合规白皮书.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "数据默认存放在哪里，会不会跨境传输？",
+      "gold": [
+        "3.5 数据出境"
+      ],
+      "keywords": [
+        "中国大陆境内",
+        "不跨境传输"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星安全合规白皮书.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "如果确实需要把数据传到境外，要办哪些手续？",
+      "gold": [
+        "3.5 数据出境"
+      ],
+      "keywords": [
+        "安全评估",
+        "专项协议"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星安全合规白皮书.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "出境数据的加密要求跟境内标准相比是什么水平？",
+      "gold": [
+        "3.5 数据出境"
+      ],
+      "keywords": [
+        "不低于境内标准"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星安全合规白皮书.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "发生一级安全事件后，多长时间内要响应，多长时间内要通报客户？",
+      "gold": [
+        "3.6 事件响应"
+      ],
+      "keywords": [
+        "1 小时内",
+        "24 小时内"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星安全合规白皮书.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "数据泄露事件必须在多少小时内向监管机构报告？",
+      "gold": [
+        "3.6 事件响应"
+      ],
+      "keywords": [
+        "72 小时内"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星安全合规白皮书.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "应急演练每年至少组织几次，演练结果要纳入什么？",
+      "gold": [
+        "3.6 事件响应"
+      ],
+      "keywords": [
+        "两次",
+        "年度审计"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星安全合规白皮书.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "北极星系列软件即服务里，一个能独立登录的账号被称为什么？",
+      "gold": [
+        "第1章 定义与解释"
+      ],
+      "keywords": [
+        "席位",
+        "可独立登录的账号"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星服务条款.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "本条款和《北极星 Pro 产品手册》发生冲突时，以哪份文件为准？",
+      "gold": [
+        "第1章 定义与解释"
+      ],
+      "keywords": [
+        "以本条款为准",
+        "《北极星 Pro 产品手册》"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星服务条款.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "要成为条款里说的「客户」，需要满足哪两个条件？",
+      "gold": [
+        "第1章 定义与解释"
+      ],
+      "keywords": [
+        "完成注册",
+        "支付费用"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星服务条款.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "服务从什么时候开始算开通？开通后要等人工审核吗？",
+      "gold": [
+        "第2章 服务开通与终止"
+      ],
+      "keywords": [
+        "首次支付",
+        "即时生效",
+        "无需人工审核"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星服务条款.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "客户主动终止服务后，账号还能保留多久的只读访问权限？之后会变成什么状态？",
+      "gold": [
+        "第2章 服务开通与终止"
+      ],
+      "keywords": [
+        "30 天",
+        "只读访问权限",
+        "冻结状态"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星服务条款.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "退款申请必须用哪个账号在控制台提交？",
+      "gold": [
+        "第3章 退款处理流程"
+      ],
+      "keywords": [
+        "管理员账号"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星服务条款.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "服务商收到完整材料后多久完成审核，审核通过后多久退回原支付账户？",
+      "gold": [
+        "第3章 退款处理流程"
+      ],
+      "keywords": [
+        "10 个工作日",
+        "5 个工作日"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星服务条款.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "退款时哪些东西不予退还，跨境支付产生的汇兑损失和手续费由谁承担？",
+      "gold": [
+        "第3章 退款处理流程"
+      ],
+      "keywords": [
+        "代金券",
+        "赠送时长",
+        "客户承担"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星服务条款.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "协议终止后，双方的保密义务还要持续多久？",
+      "gold": [
+        "第4章 数据所有权与保密"
+      ],
+      "keywords": [
+        "3 年"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星服务条款.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "服务商在什么情况下才能把客户数据用于训练模型？",
+      "gold": [
+        "第4章 数据所有权与保密"
+      ],
+      "keywords": [
+        "书面形式",
+        "明确授权"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星服务条款.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "服务商原因造成服务中断时，赔偿最多能到多少？",
+      "gold": [
+        "第5章 违约责任"
+      ],
+      "keywords": [
+        "50%",
+        "实际支付服务费"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星服务条款.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "客户违反使用条款后，服务商可以怎么处理，费用会退吗？",
+      "gold": [
+        "第5章 违约责任"
+      ],
+      "keywords": [
+        "暂停服务",
+        "不退还费用"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星服务条款.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "遇到不可抗力导致服务中断，服务商需要做什么？",
+      "gold": [
+        "第5章 违约责任"
+      ],
+      "keywords": [
+        "及时通知",
+        "顺延服务期"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星服务条款.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "服务商要变更条款，需要提前多久通知客户？",
+      "gold": [
+        "第6章 条款变更与通知"
+      ],
+      "keywords": [
+        "30 天"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星服务条款.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "客户如果不接受条款变更，可以在什么时候终止服务？",
+      "gold": [
+        "第6章 条款变更与通知"
+      ],
+      "keywords": [
+        "生效前",
+        "按比例退款"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星服务条款.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "服务商变更条款时，通过哪些渠道通知客户？",
+      "gold": [
+        "第6章 条款变更与通知"
+      ],
+      "keywords": [
+        "站内信",
+        "邮件"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星服务条款.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "生产环境每个可用区至少需要部署几个应用节点和几个数据库副本？",
+      "gold": [
+        "2.1 部署拓扑"
+      ],
+      "keywords": [
+        "2 个应用节点",
+        "1 个数据库副本"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星运维手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "负载均衡的健康检查多久做一次，连续失败几次会把节点摘掉？",
+      "gold": [
+        "2.1 部署拓扑"
+      ],
+      "keywords": [
+        "5 秒",
+        "连续 3 次失败"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星运维手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "主库出故障时数据库怎么处理，切换大概要多久？",
+      "gold": [
+        "2.1 部署拓扑"
+      ],
+      "keywords": [
+        "自动切换到从库",
+        "30 秒内"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星运维手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "P99 延迟达到什么程度会触发告警？",
+      "gold": [
+        "2.2 监控指标"
+      ],
+      "keywords": [
+        "800 毫秒",
+        "5 分钟"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星运维手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "错误率超过多少、持续多久才会告警？",
+      "gold": [
+        "2.2 监控指标"
+      ],
+      "keywords": [
+        "1%",
+        "3 分钟"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星运维手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "监控数据超过 90 天之后会怎么处理？",
+      "gold": [
+        "2.2 监控指标"
+      ],
+      "keywords": [
+        "冷存储",
+        "1 年"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星运维手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "增量备份多久做一次？",
+      "gold": [
+        "2.3 备份与恢复"
+      ],
+      "keywords": [
+        "每小时"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星运维手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "全量备份安排在每天几点执行？",
+      "gold": [
+        "2.3 备份与恢复"
+      ],
+      "keywords": [
+        "02:00"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星运维手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "恢复演练的频率和 RTO、RPO 目标分别是多少？",
+      "gold": [
+        "2.3 备份与恢复"
+      ],
+      "keywords": [
+        "每季度一次",
+        "2 小时",
+        "1 小时"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星运维手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "P1 故障发生后，需要在多长时间内拉起义诊？",
+      "gold": [
+        "2.4 故障分级"
+      ],
+      "keywords": [
+        "15 分钟",
+        "拉起义诊"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星运维手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "P1 故障的初步结论最晚要在多久内给出？",
+      "gold": [
+        "2.4 故障分级"
+      ],
+      "keywords": [
+        "2 小时",
+        "初步结论"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星运维手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "P1 故障的复盘报告要在几个工作日内输出，报告里要写哪些内容？",
+      "gold": [
+        "2.4 故障分级"
+      ],
+      "keywords": [
+        "5 个工作日",
+        "复盘报告",
+        "根因"
+      ],
+      "refusal": false,
+      "tag": "multi-hop",
+      "doc": "北极星运维手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "新版本上线时，一开始会切多少流量过去？",
+      "gold": [
+        "2.5 发布流程"
+      ],
+      "keywords": [
+        "5%"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星运维手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "发布后如果发现问题，多长时间内还能回滚？",
+      "gold": [
+        "2.5 发布流程"
+      ],
+      "keywords": [
+        "24 小时"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星运维手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "如果晚上想发布，需要谁批准？",
+      "gold": [
+        "2.5 发布流程"
+      ],
+      "keywords": [
+        "值班经理审批"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星运维手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "单个节点最多建议承载多少并发？",
+      "gold": [
+        "2.6 容量规划"
+      ],
+      "keywords": [
+        "500 并发"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星运维手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "存储容量按每年增长多少来预估？",
+      "gold": [
+        "2.6 容量规划"
+      ],
+      "keywords": [
+        "60%"
+      ],
+      "refusal": false,
+      "tag": "numeric",
+      "doc": "北极星运维手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "扩容操作最好安排在什么时候执行，以免触发自动扩缩容抖动？",
+      "gold": [
+        "2.6 容量规划"
+      ],
+      "keywords": [
+        "业务低峰期",
+        "自动扩缩容抖动"
+      ],
+      "refusal": false,
+      "tag": "paraphrase",
+      "doc": "北极星运维手册.pdf",
+      "source": "auto"
+    },
+    {
+      "q": "北极星的年费套餐能打几折？买三年有额外优惠吗？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星和Salesforce在客户成功管理上有什么主要区别？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星目前融资到第几轮？投资方有哪些？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星支持私有化部署吗？部署周期一般多久？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星提供哪些行业的预置模板？有医疗行业方案吗？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星的移动端App支持离线使用吗？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星能否与飞书、钉钉做双向同步？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星的数据导出格式有哪些？能导出原始日志吗？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    },
+    {
+      "q": "北极星有没有公开的API调用配额和开发者沙箱？",
+      "gold": [],
+      "keywords": [],
+      "refusal": true,
+      "tag": "absent",
+      "doc": "",
+      "source": "auto"
+    }
+  ]
+}

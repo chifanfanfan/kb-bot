@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.tmp-test/
+pytest-of-*/
+chroma/
+chroma_*/
+models/
+data/*.pdf
+.env
+*.log.tmp/
