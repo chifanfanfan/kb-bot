@@ -1,6 +1,6 @@
 # PDF 知识库问答机器人
 
-[![tests](https://github.com/OWNER/kb-bot/actions/workflows/tests.yml/badge.svg)](https://github.com/OWNER/kb-bot/actions/workflows/tests.yml)
+[![tests](https://github.com/chifanfanfan/kb-bot/actions/workflows/tests.yml/badge.svg)](https://github.com/chifanfanfan/kb-bot/actions/workflows/tests.yml)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![python](https://img.shields.io/badge/python-3.12-3776AB.svg)](https://www.python.org/)
 
