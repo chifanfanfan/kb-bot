@@ -1678,3 +1678,43 @@ make serve
 > ✅ 要说"写了 Dockerfile 和 .dockerignore，本地用 waitress 生产模式验证过；Docker 环境我可以在有 Docker 的机器上跑通"
 
 诚实但完整——比一句"部署过"经得起追问。
+## 19.5 补记：为什么最终没在开发机上跑通 Docker
+
+想给面试准备一个「`docker run` 一键起」的演示，结果卡在 Windows 侧：
+
+| 步骤 | 结果 |
+|---|---|
+| 下载 Docker Desktop 安装包（592 MB），验签 | ✅ Valid，CN=Docker Inc |
+| 静默安装 Docker Desktop | ✅ `docker --version` → 29.9.2 |
+| 启动守护进程 | ❌ Docker Desktop 依赖 WSL2，WSL2 起不来 |
+| `dism` 启用 VirtualMachinePlatform | ⚠️ 返回 3010（成功待重启） |
+| 重启后检查 | ❌ `HypervisorPresent=False`、`vmcompute.exe` 不存在 |
+| 查 CBS 日志 | **`HRESULT = 0x800f0922 (CBS_E_INSTALLERS_FAILED)`** |
+
+**根因：系统保留分区只有 260 MB。**
+
+Windows 安装 Hyper-V / WSL 功能需要约 500 MB 的暂存空间，260 MB 的分区装不下，
+CBS 在启动处理阶段失败并回滚——所以 dism 每次都报「成功，等待重启」，
+但重启后功能永远是 `InstallPending`，`vmcompute.exe` 始终不存在。
+
+C 盘还有 33.7 GB 空闲，和主分区无关，是这个 260 MB 的小分区卡住了。
+
+**结论**：扩容系统分区要移动分区表，失败可能开不了机，收益与风险不成比例。
+所以最终保留两条路：
+
+```bash
+python server.py --port 8000 --threads 6     # ✅ 已实测，Windows 直接跑
+docker build -t kb-bot . && docker run -p 8000:8000 kb-bot   # 配置就绪，需正常环境
+```
+
+## 19.6 面试怎么说这段
+
+这段排查本身比"部署成功"更有价值，可以这样讲：
+
+> 我在本机装了 Docker Desktop，但守护进程起不来。顺着 WSL2 → `dism` 功能启用 →
+> CBS 日志查下去，最后定位到 `0x800f0922`：系统保留分区只有 260 MB，
+> 装不下 Hyper-V 的功能负载，重启时被 CBS 回滚。
+> 因为扩容分区有风险，我改用 waitress 做生产入口，把 Dockerfile 和 .dockerignore 留好，
+> 换到正常环境直接能 build。这件事让我记住了：**Windows 上的"成功待重启"不等于成功**。
+
+能讲清"为什么没做成"，比含糊地说"部署过"更能说明工程判断。
