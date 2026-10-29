@@ -13,4 +13,4 @@ COPY . .
 RUN python scripts/fetch_models.py
 
 EXPOSE 8000
-CMD ["python", "web/app.py", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["python", "server.py", "--host", "0.0.0.0", "--port", "8000"]

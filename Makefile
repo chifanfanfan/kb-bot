@@ -1,7 +1,7 @@
 PY ?= python
 PORT ?= 8000
 
-.PHONY: help setup models build demo test eval web clean
+.PHONY: help setup models build demo test eval web serve clean
 
 help:
 	@echo "make setup   安装依赖（不含模型）"
@@ -10,7 +10,8 @@ help:
 	@echo "make demo    跑 5 分钟演示"
 	@echo "make test    单元测试（不依赖模型/网络）"
 	@echo "make eval    检索指标 + 端到端评测"
-	@echo "make web     启动网页界面 :$(PORT)"
+	@echo "make web     网页界面（开发模式）:$(PORT)"
+	@echo "make serve   网页界面（生产模式/waitress）:$(PORT)"
 
 setup:
 	$(PY) -m pip install -r requirements.txt pytest
@@ -32,6 +33,10 @@ eval:
 
 web:
 	$(PY) web/app.py --port $(PORT)
+
+serve:
+	$(PY) server.py --port $(PORT)
+	@echo 生产模式（waitress 多线程），用 Ctrl+C 停止
 
 clean:
 	rm -rf chroma models __pycache__ .pytest_cache

@@ -1638,3 +1638,43 @@ python tools/eval_multi_turn.py            # 之后不再调改写 LLM
 2. **多轮集仍小**：54 轮，扩到 200 轮才能看清记忆模块的边界；
 3. **长对话只测了一组**：滚动摘要在更多话题上的稳定性未知；
 4. **合成语料仍占多数**：255 条里 127 条来自 5 份虚构文档。
+# 十九、部署：从「开发服务器」到「生产模式」
+
+## 19.1 问题
+
+之前启动用的是 `flask run` 那套（`web/app.py` 里的 `app.run()`），
+它是**单进程调试服务器**——面试时说"能部署"就站不住脚。
+
+## 19.2 改成了 waitress
+
+新增 `server.py`，用 waitress（纯 Python WSGI，Windows/Linux 都能跑，不需要 gunicorn）：
+
+```bash
+python server.py --port 8000 --threads 6
+# 或
+make serve
+```
+
+`Dockerfile` 的 CMD 也一并改成 `python server.py`，保证镜像里跑的是同一个入口。
+
+## 19.3 实测
+
+| 项 | 结果 |
+|---|---|
+| 服务启动 | `0.0.0.0:8010`，waitress 4 线程 |
+| `/api/stats` | `{"chunks":188,"docs":7}` |
+| 完整问答 | 「降低多少」→ **80%**，2 条引用，grounded=True |
+| 并发 | 30 个请求 / 10 并发：总 0.63s，均值 192ms，最大 414ms |
+
+> 说明：并发测的是 `/api/stats`（不调 LLM），只验证 WSGI 线程模型能扛并发；
+> 真实问答的瓶颈是 LLM 调用本身（约 1.7s），不在服务器。
+
+## 19.4 还没验证的
+
+这台机器**没有装 Docker**（也没有 WSL 发行版），所以 `Dockerfile` 只做了静态检查，
+**没有实机 build 过**。面试话术要相应调整：
+
+> ❌ 不要说"我用 Docker 部署过"
+> ✅ 要说"写了 Dockerfile 和 .dockerignore，本地用 waitress 生产模式验证过；Docker 环境我可以在有 Docker 的机器上跑通"
+
+诚实但完整——比一句"部署过"经得起追问。
