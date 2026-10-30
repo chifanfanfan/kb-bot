@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDF 知识库问答 · kb-bot</title>
+<script src="/static/vendor/tailwind.js"></script>
+<style>
+  :root{
+    --bg:#0a0d13; --panel:rgba(255,255,255,.035); --line:rgba(255,255,255,.08);
+    --fg:#e8ecf4; --dim:#8b95a9; --accent:#6366f1; --accent2:#22d3ee;
+  }
+  html,body{height:100%}
+  body{
+    margin:0; background:
+      radial-gradient(900px 500px at 15% -10%, rgba(99,102,241,.16), transparent 60%),
+      radial-gradient(800px 500px at 100% 0%, rgba(34,211,238,.10), transparent 55%),
+      var(--bg);
+    color:var(--fg); font:14.5px/1.7 system-ui,"Segoe UI","Microsoft YaHei",sans-serif;
+  }
+  .glass{background:var(--panel); border:1px solid var(--line); backdrop-filter:blur(12px); border-radius:16px}
+  .scroll::-webkit-scrollbar{width:8px}
+  .scroll::-webkit-scrollbar-thumb{background:rgba(255,255,255,.09); border-radius:8px}
+  .scroll::-webkit-scrollbar-track{background:transparent}
+
+  .brand-mark{
+    width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:800;
+    background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#0a0d13;
+  }
+  .pill{border:1px solid var(--line); border-radius:999px; padding:2px 10px; font-size:12px; color:var(--dim)}
+  .pill b{color:var(--fg); font-weight:600}
+
+  .bubble{max-width:min(760px,92%); border-radius:16px; padding:13px 16px; white-space:pre-wrap; word-break:break-word}
+  .bubble.user{background:linear-gradient(135deg,rgba(99,102,241,.9),rgba(79,140,255,.85)); color:#fff; border-bottom-right-radius:6px}
+  .bubble.bot{background:var(--panel); border:1px solid var(--line); border-bottom-left-radius:6px}
+  .avatar{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;font-size:13px;flex:none}
+  .avatar.bot{background:linear-gradient(135deg,rgba(99,102,241,.25),rgba(34,211,238,.18)); border:1px solid var(--line)}
+  .avatar.user{background:rgba(255,255,255,.08); border:1px solid var(--line)}
+
+  .chip{
+    display:inline-flex;align-items:center;gap:4px;padding:1px 8px;margin:0 2px;border-radius:7px;
+    background:rgba(99,102,241,.16); border:1px solid rgba(99,102,241,.35); color:#c7d2fe;
+    font-size:12px; cursor:pointer; transition:.15s; vertical-align:baseline;
+  }
+  .chip:hover{background:rgba(99,102,241,.3); color:#fff}
+
+  .typing{display:inline-flex;gap:4px;align-items:center}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--dim);animation:bounce 1.2s infinite}
+  .dot:nth-child(2){animation-delay:.15s} .dot:nth-child(3){animation-delay:.3s}
+  @keyframes bounce{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-4px);opacity:1}}
+
+  .stage{font-size:12.5px;color:var(--dim);margin-top:6px}
+  .cites{margin-top:10px;display:flex;flex-direction:column;gap:4px}
+  .cite{display:flex;gap:8px;align-items:baseline;font-size:12.5px;color:var(--dim);cursor:pointer;
+        padding:3px 6px;border-radius:8px;transition:.15s}
+  .cite:hover{background:rgba(255,255,255,.05);color:var(--fg)}
+  .cite b{color:#a5b4fc;font-weight:600;flex:none}
+
+  .badge{display:inline-block;font-size:11.5px;padding:1px 8px;border-radius:999px;margin-top:8px}
+  .badge.ok{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.35);color:#86efac}
+  .badge.warn{background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.35);color:#fcd34d}
+
+  .quick{width:100%;text-align:left;padding:10px 12px;border-radius:12px;border:1px solid var(--line);
+         background:rgba(255,255,255,.02);color:var(--dim);font-size:13px;transition:.15s;cursor:pointer}
+  .quick:hover{border-color:rgba(99,102,241,.5);color:var(--fg);background:rgba(99,102,241,.08)}
+
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border-radius:12px;border:1px solid var(--line);
+       background:rgba(255,255,255,.03);color:var(--fg);font-size:13px;cursor:pointer;transition:.15s}
+  .btn:hover{background:rgba(255,255,255,.07)}
+  .btn.primary{background:linear-gradient(135deg,var(--accent),#3b82f6);border:0;color:#fff}
+  .btn.primary:hover{filter:brightness(1.08)}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+
+  #composer{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:18px;transition:.2s}
+  #composer:focus-within{border-color:rgba(99,102,241,.55); box-shadow:0 0 0 4px rgba(99,102,241,.10)}
+  #q{background:transparent;border:0;outline:none;color:var(--fg);resize:none;font:inherit;width:100%}
+  #q::placeholder{color:#5b6479}
+
+  #drawer{position:fixed;top:0;right:0;height:100%;width:min(520px,92vw);transform:translateX(102%);
+          transition:transform .28s cubic-bezier(.4,0,.2,1);z-index:60}
+  #drawer.open{transform:translateX(0)}
+  #drop{position:fixed;inset:0;background:rgba(10,13,19,.82);z-index:70;display:none;place-items:center}
+  #drop.on{display:grid}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:80;
+         background:rgba(244,63,94,.14);border:1px solid rgba(244,63,94,.4);color:#fecdd3;
+         padding:9px 16px;border-radius:12px;font-size:13px;display:none}
+</style>
+</head>
+<body class="h-full">
+
+<div class="h-full flex">
+
+  <!-- ============ 侧栏 ============ -->
+  <aside class="hidden md:flex w-[290px] flex-none flex-col gap-4 p-4 border-r" style="border-color:var(--line)">
+    <div class="flex items-center gap-3">
+      <div class="brand-mark">KB</div>
+      <div>
+        <div class="font-semibold leading-tight">PDF 知识库问答</div>
+        <div class="text-xs" style="color:var(--dim)">RAG · 本地向量 · 带引用</div>
+      </div>
+    </div>
+
+    <div class="glass p-3">
+      <div class="flex items-center justify-between text-xs mb-2" style="color:var(--dim)">
+        <span>知识库状态</span>
+        <button onclick="refreshStats()" class="hover:text-white transition" title="刷新">↻</button>
+      </div>
+      <div class="flex gap-2 flex-wrap">
+        <span class="pill">文本块 <b id="stat-chunks">—</b></span>
+        <span class="pill">文档 <b id="stat-docs">—</b></span>
+      </div>
+      <div class="mt-3 flex gap-2">
+        <button class="btn flex-1 justify-center" onclick="fileInput.click()">上传 PDF</button>
+        <button class="btn" onclick="resetKB()" title="清空向量库">🗑</button>
+      </div>
+      <input type="file" id="fileInput" accept=".pdf" class="hidden">
+    </div>
+
+    <div class="glass p-3 flex-1 overflow-auto scroll">
+      <div class="text-xs mb-2" style="color:var(--dim)">试试这些</div>
+      <div class="flex flex-col gap-2" id="quickList"></div>
+    </div>
+
+    <div class="text-[11.5px] leading-relaxed" style="color:#5b6479">
+      检索：向量 + BM25 融合 → 重排<br>
+      生成：DeepSeek · 引用可溯源<br>
+      答不出会直接说「资料中没有」
+    </div>
+  </aside>
+
+  <!-- ============ 主区 ============ -->
+  <main class="flex-1 flex flex-col min-w-0">
+    <header class="flex items-center gap-3 px-5 py-3 border-b" style="border-color:var(--line)">
+      <div class="md:hidden brand-mark">KB</div>
+      <div class="min-w-0">
+        <div class="font-medium truncate">知识库助手</div>
+        <div class="text-xs truncate" style="color:var(--dim)" id="subtitle">正在读取库状态…</div>
+      </div>
+      <div class="ml-auto flex items-center gap-2">
+        <button class="btn md:hidden" onclick="fileInput.click()">上传</button>
+        <button class="btn" onclick="clearChat()">清空对话</button>
+      </div>
+    </header>
+
+    <div id="log" class="flex-1 overflow-y-auto scroll px-4 md:px-8 py-6">
+      <div class="max-w-3xl mx-auto flex flex-col gap-5" id="messages"></div>
+    </div>
+
+    <div class="px-4 md:px-8 pb-4">
+      <div class="max-w-3xl mx-auto">
+        <div id="composer" class="flex items-end gap-2 p-2 pl-4">
+          <textarea id="q" rows="1" placeholder="问点什么，比如：这套系统把人工审核工作量降低了多少？"></textarea>
+          <button id="send" class="btn primary" onclick="ask()"><span id="sendLabel">提问</span> <span>↑</span></button>
+        </div>
+        <div class="text-[11.5px] mt-2 flex gap-3" style="color:#5b6479">
+          <span>Enter 发送 · Shift+Enter 换行</span>
+          <span>·</span>
+          <span>可拖拽 PDF 到页面建库</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ============ 引用抽屉 ============ -->
+<div id="drawer" class="p-4">
+  <div class="glass h-full flex flex-col overflow-hidden">
+    <div class="flex items-start gap-3 p-4 border-b" style="border-color:var(--line)">
+      <div class="min-w-0">
+        <div class="text-xs" style="color:var(--dim)">引用来源</div>
+        <div class="font-medium truncate" id="drawerTitle">—</div>
+      </div>
+      <button class="btn ml-auto" onclick="closeDrawer()">关闭</button>
+    </div>
+    <div class="p-4 overflow-auto scroll text-sm" id="drawerBody"></div>
+  </div>
+</div>
+
+<div id="drop"><div class="text-center">
+  <div class="text-3xl mb-2">📄</div>
+  <div class="font-medium">松手即可建库</div>
+  <div class="text-sm" style="color:var(--dim)">支持 PDF，会先解析再向量化</div>
+</div></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const messagesEl = document.getElementById('messages');
+const fileInput = document.getElementById('fileInput');
+const qEl = document.getElementById('q');
+const sendBtn = document.getElementById('send');
+
+const QUICKS = [
+  '这套系统的架构分成几层？',
+  '年付多少钱？退款窗口几天？',
+  'users 表的主键是什么类型？',
+  '支持私有化部署吗？',
+];
+
+let busy = false;
+
+/* ---------------- 工具 ---------------- */
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';
+  clearTimeout(t._h);t._h=setTimeout(()=>t.style.display='none',3200);}
+function scrollBottom(){const l=document.getElementById('log');l.scrollTop=l.scrollHeight;}
+
+/* ---------------- 库状态 ---------------- */
+async function refreshStats(){
+  try{
+    const d = await (await fetch('/api/stats')).json();
+    document.getElementById('stat-chunks').textContent = d.chunks ?? 0;
+    document.getElementById('stat-docs').textContent = d.docs ?? 0;
+    document.getElementById('subtitle').textContent = d.chunks
+      ? `库内 ${d.chunks} 个文本块 · ${d.docs} 份文档`
+      : '库是空的，先上传一份 PDF';
+  }catch(e){ document.getElementById('subtitle').textContent = '状态读取失败'; }
+}
+
+/* ---------------- 消息渲染 ---------------- */
+function addUser(text){
+  const row = document.createElement('div');
+  row.className = 'flex gap-3 justify-end';
+  row.innerHTML = `
+    <div class="bubble user">${esc(text)}</div>
+    <div class="avatar user">你</div>`;
+  messagesEl.appendChild(row); scrollBottom();
+}
+
+function addBotPlaceholder(){
+  const row = document.createElement('div');
+  row.className = 'flex gap-3';
+  row.innerHTML = `
+    <div class="avatar bot">AI</div>
+    <div class="min-w-0 flex-1">
+      <div class="bubble bot" style="display:inline-block">
+        <span class="typing"><i class="dot"></i><i class="dot"></i><i class="dot"></i></span>
+        <div class="stage" id="stage">检索中…</div>
+      </div>
+    </div>`;
+  messagesEl.appendChild(row); scrollBottom();
+  return row;
+}
+
+function renderBot(row, d){
+  const bubble = row.querySelector('.bubble');
+  let html = esc(d.answer || '（空回答）');
+
+  // 把 [1] 这类角标换成可点的 chip
+  html = html.replace(/\[(\d+)\]/g, (m, n) =>
+    `<span class="chip" data-n="${n}">[${n}]</span>`);
+
+  bubble.style.whiteSpace = 'pre-wrap';
+  bubble.innerHTML = html;
+
+  if (d.citations && d.citations.length){
+    const box = document.createElement('div');
+    box.className = 'cites';
+    box.innerHTML = d.citations.map(c =>
+      `<div class="cite" data-n="${c.n}"><b>[${c.n}]</b>
+        <span>《${esc(c.doc)}》p${c.page}${c.page_end!==c.page?'-'+c.page_end:''} ·
+        ${esc(c.section)}</span></div>`).join('');
+    bubble.appendChild(box);
+    box.querySelectorAll('.cite').forEach(el =>
+      el.onclick = () => openCite(d.citations.find(c => String(c.n) === el.dataset.n)));
+  }
+
+  bubble.querySelectorAll('.chip').forEach(el => {
+    el.onclick = () => {
+      const c = (d.citations || []).find(x => String(x.n) === el.dataset.n);
+      if (c) openCite(c);
+    };
+  });
+
+  const foot = document.createElement('div');
+  if (d.grounded === false)
+    foot.innerHTML += '<span class="badge warn">⚠ 未通过接地校验，请核对引用</span> ';
+  if (d.note)
+    foot.innerHTML += `<span class="badge warn">ℹ ${esc(d.note)}</span>`;
+  if (foot.innerHTML) bubble.appendChild(foot);
+}
+
+/* ---------------- 提问 ---------------- */
+async function ask(){
+  if (busy) return;
+  const q = qEl.value.trim();
+  if (!q) return;
+  qEl.value = ''; qEl.style.height = 'auto';
+  addUser(q);
+  const row = addBotPlaceholder();
+  const stage = row.querySelector('#stage');
+
+  const stages = ['改写追问…', '向量 + BM25 召回…', '分数融合…', '交叉编码器重排…', '生成答案…'];
+  let si = 0;
+  const timer = setInterval(() => { si = (si + 1) % stages.length; if (stage) stage.textContent = stages[si]; }, 900);
+
+  busy = true; sendBtn.disabled = true;
+  try{
+    const r = await fetch('/api/ask', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({question: q})
+    });
+    const d = await r.json();
+    clearInterval(timer);
+    if (d.error){ row.querySelector('.bubble').textContent = '出错了：' + d.error; return; }
+    renderBot(row, d);
+  }catch(e){
+    clearInterval(timer);
+    row.querySelector('.bubble').textContent = '网络错误：' + e.message;
+  }finally{
+    busy = false; sendBtn.disabled = false; scrollBottom(); qEl.focus();
+  }
+}
+
+/* ---------------- 引用抽屉 ---------------- */
+function openCite(c){
+  if (!c) return;
+  document.getElementById('drawerTitle').textContent =
+    `[${c.n}] 《${c.doc}》 p${c.page} · ${c.section}`;
+  document.getElementById('drawerBody').innerHTML = `
+    <div class="mb-3 text-xs" style="color:var(--dim)">相关度 <b style="color:#a5b4fc">${c.score}</b></div>
+    <blockquote class="pl-3 py-1" style="border-left:2px solid rgba(99,102,241,.5);color:#cbd5e1">
+      ${esc(c.snippet)}…
+    </blockquote>`;
+  document.getElementById('drawer').classList.add('open');
+}
+function closeDrawer(){ document.getElementById('drawer').classList.remove('open'); }
+
+/* ---------------- 上传 / 重置 ---------------- */
+async function uploadPDF(f){
+  if (!f) return;
+  addUser(`📄 上传 ${f.name}`);
+  const row = addBotPlaceholder();
+  row.querySelector('#stage').textContent = '解析 PDF → 分块 → 向量化…';
+  const fd = new FormData(); fd.append('file', f);
+  try{
+    const d = await (await fetch('/api/upload', {method:'POST', body: fd})).json();
+    clearInterval();
+    row.querySelector('.bubble').innerHTML = d.error
+      ? `建库失败：${esc(d.error)}`
+      : `建库完成：${d.pages} 页 → ${d.sections} 节 → <b>${d.chunks}</b> 块`
+        + (d.ocr_pages ? `（OCR ${d.ocr_pages} 页）` : '');
+    refreshStats();
+  }catch(e){ row.querySelector('.bubble').textContent = '上传失败：' + e.message; }
+}
+
+async function resetKB(){
+  if (!confirm('确定清空向量库？所有已索引文档都会删除。')) return;
+  await fetch('/api/reset', {method:'POST'});
+  refreshStats(); clearChat(); toast('向量库已清空');
+}
+
+function clearChat(){ messagesEl.innerHTML = ''; emptyState(); }
+
+function emptyState(){
+  const wrap = document.createElement('div');
+  wrap.className = 'text-center py-16';
+  wrap.innerHTML = `
+    <div class="brand-mark mx-auto mb-4" style="width:52px;height:52px;font-size:18px">KB</div>
+    <div class="text-lg font-medium mb-1">问点什么吧</div>
+    <div class="text-sm mb-6" style="color:var(--dim)">答案会附带页码和小节，可点开核对原文</div>
+    <div class="flex flex-wrap gap-2 justify-center" id="emptyQuick"></div>`;
+  messagesEl.appendChild(wrap);
+  const box = wrap.querySelector('#emptyQuick');
+  QUICKS.slice(0,3).forEach(t => {
+    const b = document.createElement('button');
+    b.className = 'quick'; b.style.width = 'auto'; b.textContent = t;
+    b.onclick = () => { qEl.value = t; ask(); };
+    box.appendChild(b);
+  });
+}
+
+/* ---------------- 事件 ---------------- */
+fileInput.addEventListener('change', e => { uploadPDF(e.target.files[0]); fileInput.value=''; });
+document.getElementById('send').addEventListener('click', ask);
+qEl.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); ask(); }
+});
+qEl.addEventListener('input', () => {
+  qEl.style.height = 'auto'; qEl.style.height = Math.min(qEl.scrollHeight, 140) + 'px';
+});
+
+let dragDepth = 0;
+window.addEventListener('dragenter', e => { e.preventDefault(); dragDepth++; document.getElementById('drop').classList.add('on'); });
+window.addEventListener('dragover', e => e.preventDefault());
+window.addEventListener('dragleave', e => { dragDepth--; if (dragDepth <= 0) document.getElementById('drop').classList.remove('on'); });
+window.addEventListener('drop', e => {
+  e.preventDefault(); dragDepth = 0; document.getElementById('drop').classList.remove('on');
+  const f = e.dataTransfer.files[0];
+  if (f && f.name.toLowerCase().endsWith('.pdf')) uploadPDF(f);
+  else if (f) toast('只支持 PDF 文件');
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+/* 快捷问题 */
+const ql = document.getElementById('quickList');
+QUICKS.forEach(t => {
+  const b = document.createElement('button');
+  b.className = 'quick'; b.textContent = t;
+  b.onclick = () => { qEl.value = t; qEl.focus(); };
+  ql.appendChild(b);
+});
+
+refreshStats();
+emptyState();
+qEl.focus();
+</script>
+</body>
+</html>
