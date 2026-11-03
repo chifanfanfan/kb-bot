@@ -1,0 +1,21 @@
+[Unit]
+Description=kb-bot PDF knowledge base QA
+After=network.target
+
+[Service]
+Type=simple
+User=kb
+WorkingDirectory=/opt/kb-bot
+Environment="DEEPSEEK_API_KEY=CHANGE_ME"
+ExecStart=/usr/bin/python3 /opt/kb-bot/server.py --host 127.0.0.1 --port 8000 --threads 4
+Restart=always
+RestartSec=3
+
+# 基本加固
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/opt/kb-bot/chroma /opt/kb-bot/cache /opt/kb-bot/data
+
+[Install]
+WantedBy=multi-user.target

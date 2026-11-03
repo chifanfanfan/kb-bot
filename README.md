@@ -2082,3 +2082,54 @@ python tools/make_blind_review.py --n 30
 > 章节切错好几处。说明这套参数是给产品手册调的，不是通用的。"
 
 主动报"换语料掉 5 个点 + 根因是分块适配"，比只说"准确率 98%"可信十倍。
+# 二十五、部署：没有服务器怎么办
+
+## 25.1 现实
+
+面试需要"能点开的地址"，但手上没有服务器。
+所以用两条免费路线组合，并且**说清楚各自证明了什么**。
+
+## 25.2 方案 B：GitHub Actions 真跑容器（已落地）
+
+新增 `.github/workflows/docker.yml`，推送后自动：
+
+```yaml
+docker build -t kb-bot .
+docker run -d --name kb -p 8000:8000 kb-bot
+轮询 curl http://127.0.0.1:8000/api/stats 直到返回 200
+docker logs  --tail 50
+docker rm -f kb
+```
+
+**证明了**：镜像能在干净环境构建、容器能启动、接口真的通。
+**没证明**：长期在线、域名、并发。
+
+> 为什么不用本机 Docker：这台机器的系统保留分区只有 260 MB，
+> 装不下 WSL 虚拟化组件（报 `0x800f0922`），详见第十九章。
+
+## 25.3 方案 A：Hugging Face Spaces（免费永久地址）
+
+步骤写在 [docs/deploy.md](docs/deploy.md)，要点：
+
+1. 注册 HF（邮箱即可，不要信用卡）；
+2. New Space → SDK 选 **Docker** → 免费 CPU；
+3. 推代码，根目录 README 用 `deploy/huggingface/README.md`（带 Spaces 配置头）；
+4. Settings 里加 `DEEPSEEK_API_KEY` 为 **Secret**；
+5. 构建 8-15 分钟，地址形如 `https://<用户名>-kb-bot.hf.space`。
+
+免费 CPU 很慢（一次问答 10-20 秒），**只能当演示环境**，不能当性能测试。
+
+## 25.4 方案 C：云服务器（有预算时）
+
+`deploy/kb-bot.service`（systemd）+ nginx 反代，文档里有全套命令。
+
+## 25.5 面试怎么讲
+
+> "部署我没租服务器，用两条路解决：
+> 一是在 CI 里跑 `docker build` + `docker run` + 健康检查，证明镜像能起；
+> 二是放到了 Hugging Face Spaces 免费实例上，地址是 xxx，您现在能点开。
+> 免费实例只有 2C，一次问答十几秒，所以它不是性能环境——
+> 上生产我会用 2C4G 云服务器 + nginx，文档里写了。"
+
+把"没有服务器"讲成"用免费资源解决演示需求"，并明确区分演示/生产，
+比含糊说"部署过"专业得多。

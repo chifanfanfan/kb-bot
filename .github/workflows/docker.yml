@@ -1,0 +1,40 @@
+name: docker
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build image
+        run: docker build -t kb-bot .
+
+      - name: Run container
+        run: docker run -d --name kb -p 8000:8000 kb-bot
+
+      - name: Wait for health
+        run: |
+          for i in $(seq 1 30); do
+            if curl -sf http://127.0.0.1:8000/api/stats; then
+              echo ""
+              echo "OK: service is up"
+              exit 0
+            fi
+            sleep 4
+          done
+          echo "service did not start"
+          docker logs kb
+          exit 1
+
+      - name: Show logs
+        if: always()
+        run: docker logs --tail 50 kb
+
+      - name: Stop container
+        if: always()
+        run: docker rm -f kb
