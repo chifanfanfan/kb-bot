@@ -65,6 +65,7 @@ class Config:
     memory_turns: int = 6          # 保留最近几轮原文
     verify_min_chars: int = 0      # 条件校验：64 条子集上省 1.5s，255 条上只省 0.2s 且掉 1 题，已回退
     memory_summary_chars: int = 1200
+    store_dir: Path = STORE_DIR   # 允许换库（测试 / 多租户）
 
 
 def _resolve_key() -> str:
