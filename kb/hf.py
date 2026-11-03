@@ -6,10 +6,13 @@ huggingface.co 在国内基本不可达，hf-mirror.com 是同一套内容的镜
 
 from __future__ import annotations
 
+import os
+
 import urllib.request
 from pathlib import Path
 
-HF_MIRROR = "https://hf-mirror.com"
+# 国内默认走镜像；HF Spaces / 海外环境通过 HF_ENDPOINT 覆盖
+HF_MIRROR = os.environ.get("HF_ENDPOINT") or "https://hf-mirror.com"
 
 
 def download_file(url: str, dest: Path, *, quiet: bool = False) -> Path:
