@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 import time
+import unicodedata
 from dataclasses import dataclass, replace
 from pathlib import Path
 
@@ -47,14 +48,50 @@ def load_cases(path: Path | None = None) -> list[Case]:
     ]
 
 
+_PUNCT = " \t\n\r，。、；：？！,.;:?!\"'“”‘’（）()[]【】<>《》~`|/\\-_"
+
+
+def _norm(text: str) -> str:
+    """归一化：全角转半角、去标点与千分位、转小写。
+
+    解决三类"看着一样但字符串不同"：
+    - `1,990` / `1990`  （千分位）
+    - `99.9%` / `99.9`  （百分号）
+    - `ＴＬＳ` / `TLS`    （全角）
+    """
+    s = unicodedata.normalize("NFKC", text or "")
+    s = "".join(ch for ch in s if ch not in _PUNCT)
+    return s.lower()
+
+
 def _squash(text: str) -> str:
-    """去掉所有空白再比对：模型输出"10 到 15 个工作日"和标注的"10 到 15个工作日"
-    只差一个空格，不该判错。"""
-    return "".join(text.split())
+    """保留旧名字，内部改成完整归一化。"""
+    return _norm(text)
+
+
+# 否定词：出现关键词前面 4 个字内，视为"没命中"（避免"不支持 X"被判成支持 X）
+_NEGATIONS = ("不", "没", "无", "未", "非", "勿", "免", "不能", "无法", "并非", "不支持", "未提供")
+
+
+def _negated(text: str, keyword: str) -> bool:
+    """关键词虽然出现，但被否定了。"""
+    t = _norm(text)
+    k = _norm(keyword)
+    if not k:
+        return False
+    idx = t.find(k)
+    while idx != -1:
+        window = t[max(0, idx - 4):idx]
+        if not any(window.endswith(neg) or neg in window for neg in _NEGATIONS):
+            return False  # 找到一处没被否定的命中
+        idx = t.find(k, idx + 1)
+    return True
 
 
 def _contains(text: str, keyword: str) -> bool:
-    return _squash(keyword) in _squash(text)
+    if _norm(keyword) not in _norm(text):
+        return False
+    return not _negated(text, keyword)
 
 
 def is_refusal(text: str) -> bool:
