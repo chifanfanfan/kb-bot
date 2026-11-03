@@ -2107,17 +2107,27 @@ docker rm -f kb
 > 为什么不用本机 Docker：这台机器的系统保留分区只有 260 MB，
 > 装不下 WSL 虚拟化组件（报 `0x800f0922`），详见第十九章。
 
-## 25.3 方案 A：Hugging Face Spaces（免费永久地址）
+## 25.3 方案 A：GitHub Codespaces（免费 60 核时/月）
 
-步骤写在 [docs/deploy.md](docs/deploy.md)，要点：
+> 原计划用 Hugging Face Spaces，但查出 **HF 的 Docker SDK 现在需要 PRO 付费**，
+> 免费只剩 Static（跑不了后端）。方案作废，换 Codespaces。
 
-1. 注册 HF（邮箱即可，不要信用卡）；
-2. New Space → SDK 选 **Docker** → 免费 CPU；
-3. 推代码，根目录 README 用 `deploy/huggingface/README.md`（带 Spaces 配置头）；
-4. Settings 里加 `DEEPSEEK_API_KEY` 为 **Secret**；
-5. 构建 8-15 分钟，地址形如 `https://<用户名>-kb-bot.hf.space`。
+仓库里已加 `.devcontainer/devcontainer.json`：
 
-免费 CPU 很慢（一次问答 10-20 秒），**只能当演示环境**，不能当性能测试。
+```json
+{
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "postCreateCommand": "pip install -r requirements.txt && python scripts/fetch_models.py",
+  "postStartCommand": "python server.py --host 0.0.0.0 --port 8000",
+  "forwardPorts": [8000]
+}
+```
+
+步骤：仓库 → Code → Codespaces → Create → 等 5-8 分钟 →
+**PORTS 面板里把 8000 设成 Public** → 拿到 `https://xxx-8000.app.github.dev`。
+
+免费额度 60 核时/月（2 核机器约 30 小时），闲置 30 分钟自动停。
+**别在里面压测**，核时烧得快。
 
 ## 25.4 方案 C：云服务器（有预算时）
 
