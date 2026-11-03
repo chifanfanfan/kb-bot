@@ -9,4 +9,13 @@ chroma_*/
 models/
 data/*.pdf
 .env
-*.log.tmp/
+*.log
+.tmp/
+
+# Chainlit 自动生成（config.toml 保留，translations 每次运行会重建）
+.chainlit/translations/
+
+# 运行时产物
+cache/
+.files/
+tmp*/
