@@ -88,6 +88,8 @@ class KnowledgeBase:
         self.retriever.refresh()
         cache_dir = getattr(self.cfg, "cache_dir", None)
         self._cache = AnswerCache(cache_dir) if cache_dir and self.cfg.use_cache else None
+        # 服务启动时库是空的（部署常见：先起服务、后建库）→ 每次查询前探测一次
+        self._booted_empty = self.store.count() == 0
         self.last_cost = {"calls": 0, "prompt_tokens": 0, "completion_tokens": 0}
 
     # ---------------- 建库 ----------------
@@ -131,6 +133,24 @@ class KnowledgeBase:
         self.retriever.refresh()
         return stats
 
+    def _revive_if_built_later(self) -> None:
+        """启动时库是空的，后来被别的进程建好了 → 重开连接 + 刷新索引。
+
+        旧句柄查 count 会返回 0（不报错），所以不能等它异常，
+        只能主动用新连接探测一次；探测到有数据就永久关闭这个开关。
+        """
+        if not getattr(self, "_booted_empty", False):
+            return
+        try:
+            probe = VectorStore(self.cfg.store_dir, self.cfg.collection)
+            n = probe.count()
+        except Exception:
+            return
+        if n > 0:
+            self.store.reopen()
+            self.retriever.refresh()
+            self._booted_empty = False
+
     def _doc_version(self) -> str:
         """块数 + 文档名哈希：文档一变，缓存自动失效。"""
         import hashlib
@@ -170,6 +190,7 @@ class KnowledgeBase:
         from .memory import needs_condense
         from .rewrite import rewrite
 
+        self._revive_if_built_later()
         version = self._doc_version()
         if self._cache is not None:  # cache_lookup
             cached = self._cache.get(question, version)

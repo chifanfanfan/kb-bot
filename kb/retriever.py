@@ -75,6 +75,22 @@ class HybridRetriever:
         return self._reranker
 
     # ---------- 索引 ----------
+    def _maybe_refresh(self) -> None:
+        """库被别人重建过（块数变了）就自动刷新 BM25 索引。
+
+        场景：服务启动时库是空的，命令行建库后服务不重启也要能查到。
+        """
+        try:
+            n = self.store.count()
+        except Exception:
+            return
+        self._auto_n = getattr(self, "_auto_n", None)
+        if self._auto_n is None:
+            self._auto_n = len(self._records)
+        if n != self._auto_n:  # auto_refresh
+            self.refresh()
+            self._auto_n = n
+
     def refresh(self) -> None:
         self._records = self.store.all_records()
         corpus = [tokenize(r.text) for r in self._records]
@@ -165,6 +181,7 @@ class HybridRetriever:
 
     # ---------- 对外 ----------
     def search(self, query: str, k: int | None = None, extra_queries: list[str] | None = None) -> list[Hit]:
+        self._maybe_refresh()  # 库被外部重建过就先刷 BM25
         cfg = self.cfg
         k_final = k or cfg.top_k_final
         queries = [query] + [q for q in (extra_queries or []) if q and q != query]

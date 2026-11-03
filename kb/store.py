@@ -30,6 +30,7 @@ class Record:
 
 class VectorStore:
     def __init__(self, path: Path | str, collection: str = COLLECTION) -> None:
+        self._path = str(path)
         Path(path).mkdir(parents=True, exist_ok=True)  # chromadb 不会自己建目录
         self.client = chromadb.PersistentClient(
             path=str(path),
@@ -50,6 +51,40 @@ class VectorStore:
         except Exception:
             self.collection = self._open()
         return self.collection
+
+    def reopen(self) -> None:
+        """重建 client + collection。
+
+        场景：服务启动时库是空的，另一进程后来建了库，
+        当前进程缓存的是一个指向空磁盘的 hnsw 句柄，查询会报
+        "Error creating hnsw segment reader: Nothing found on disk"。
+        """
+        # chromadb 按路径缓存了 system 单例，不清掉的话新建 client 拿到的还是旧句柄
+        try:
+            from chromadb.api.shared_system_client import SharedSystemClient
+            SharedSystemClient._identifier_to_system.clear()
+        except Exception:
+            pass
+        try:
+            self.client = chromadb.PersistentClient(
+                path=self._path,
+                settings=Settings(anonymized_telemetry=False, allow_reset=True),
+            )
+        except Exception:
+            pass
+        self.collection = self._open()
+
+    def _retry_on_stale(self, fn):
+        """执行 fn(collection)；遇到 hnsw 句柄失效就重开一次再试。"""
+        coll = self._alive()
+        try:
+            return fn(coll)
+        except Exception as exc:  # noqa: BLE001
+            msg = str(exc).lower()
+            if "hnsw" in msg or "nothing found on disk" in msg or "segment reader" in msg:
+                self.reopen()
+                return fn(self.collection)
+            raise
 
     def add(self, chunks: list[Chunk], embeddings: list[list[float]]) -> None:
         if not chunks:
@@ -73,15 +108,17 @@ class VectorStore:
         )
 
     def query(self, embedding: list[float], k: int, where: dict | None = None):
-        return self._alive().query(
-            query_embeddings=[embedding],
-            n_results=k,
-            where=where,
-            include=["documents", "metadatas", "distances"],
+        return self._retry_on_stale(
+            lambda coll: coll.query(
+                query_embeddings=[embedding],
+                n_results=k,
+                where=where,
+                include=["documents", "metadatas", "distances"],
+            )
         )
 
     def all_records(self) -> list[Record]:
-        got = self._alive().get(include=["documents", "metadatas"])
+        got = self._retry_on_stale(lambda coll: coll.get(include=["documents", "metadatas"]))
         out: list[Record] = []
         for cid, text, meta in zip(got["ids"], got["documents"], got["metadatas"]):
             out.append(
@@ -115,7 +152,7 @@ class VectorStore:
         return out
 
     def count(self) -> int:
-        return self._alive().count()
+        return self._retry_on_stale(lambda coll: coll.count())
 
     def reset(self) -> None:
         try:

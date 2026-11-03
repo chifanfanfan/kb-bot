@@ -2143,3 +2143,66 @@ docker rm -f kb
 
 把"没有服务器"讲成"用免费资源解决演示需求"，并明确区分演示/生产，
 比含糊说"部署过"专业得多。
+## 25.6 实测记录：Codespaces 上真跑起来了
+
+第一次在云端部署，踩了三个坑，都记下来。
+
+### 坑 1：接口返回 0 块
+
+```
+curl /api/stats  →  {"chunks":0,"docs":0}
+```
+
+原因：`chroma/` 在 `.gitignore` 里（向量库不该进 Git），所以云端仓库没有索引。
+
+**这提醒我一件事**：RAG 的"部署"不只是起服务，还要有**建索引的初始化流程**。
+
+### 坑 2：建库后查询报 hnsw 错
+
+```
+Error creating hnsw segment reader: Nothing found on disk
+```
+
+原因：服务先启动，那时库是空的，进程缓存了一个空集合句柄；
+后来命令行建库，服务还是拿着旧句柄。
+
+**试了两层修法，都没根治**：
+
+| 尝试 | 结果 |
+|---|---|
+| `store.reopen()` + 捕获 hnsw 异常重试 | ❌ 旧句柄查 count 返回 0 而不是报错，判断不到 |
+| 清掉 chromadb 的 `SharedSystemClient` 单例缓存再重连 | ❌ 同进程内仍看不到另一进程写入的数据 |
+
+**最终解法**：`scripts/start.sh` —— 启动时先检查块数，是 0 就先建库，再起服务。
+
+```bash
+COUNT=$(python -c "...store.count()...")
+if [ "$COUNT" = "0" ]; then python -m kb build data/synthetic; fi
+exec python server.py --host 0.0.0.0 --port 8000
+```
+
+`devcontainer.json` 的 `postStartCommand` 改成 `bash scripts/start.sh`，以后打开 Codespace 自动完成。
+
+### 坑 3：模型下载地址写死国内镜像
+
+`kb/hf.py` 原来硬编码 `hf-mirror.com`，海外环境会超时。
+改成读 `HF_ENDPOINT` 环境变量，默认仍是镜像（国内友好），部署时覆盖。
+
+### 最终结果
+
+```
+库：43 块 / 6 文档（含一份扫描件，走了 OCR）
+问答：curl 返回 1990 + 引用《北极星Pro产品手册.pdf》第 1 页
+公网：手机 4G 可访问，问答正常
+```
+
+### 面试怎么讲这一段
+
+> "我在 Codespaces 上部署时遇到一个问题：服务先起来、库后建，结果查询报 hnsw 错。
+> 我试了重连、清缓存都没用——因为 chromadb 按路径缓存系统单例，
+> 同一进程重连读不到另一个进程写的数据。
+> 最后改成启动脚本先建库再起服务，把顺序问题从根上解决了。
+> 这件事让我意识到：**RAG 的部署清单里必须有'建索引'这一步**，
+> 否则服务是活的，知识库是空的。"
+
+**踩坑 + 试错 + 换思路**，比"部署成功"有信息量得多。
