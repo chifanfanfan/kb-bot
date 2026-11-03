@@ -15,6 +15,7 @@ from .llm import LLM
 from .memory import ConversationMemory
 from .pdf_loader import parse_pdf
 from .retriever import Hit, HybridRetriever
+from .cache import AnswerCache
 from .security import answer_looks_hijacked, has_injection, wrap_document
 from .store import VectorStore
 
@@ -85,6 +86,9 @@ class KnowledgeBase:
         self.llm = LLM(self.cfg.llm)
         self.retriever = HybridRetriever(self.store, self.embedder, self.cfg.retrieve)
         self.retriever.refresh()
+        cache_dir = getattr(self.cfg, "cache_dir", None)
+        self._cache = AnswerCache(cache_dir) if cache_dir and self.cfg.use_cache else None
+        self.last_cost = {"calls": 0, "prompt_tokens": 0, "completion_tokens": 0}
 
     # ---------------- 建库 ----------------
     def _embed_text(self, chunk) -> str:
@@ -127,6 +131,14 @@ class KnowledgeBase:
         self.retriever.refresh()
         return stats
 
+    def _doc_version(self) -> str:
+        """块数 + 文档名哈希：文档一变，缓存自动失效。"""
+        import hashlib
+        recs = self.store.all_records()
+        names = sorted({r.doc for r in recs})
+        raw = f"{len(recs)}|{'|'.join(names)}"
+        return hashlib.sha1(raw.encode()).hexdigest()[:12]
+
     # ---------------- 上下文 ----------------
     def _context(self, hits: list[Hit], max_chars: int = 12000) -> tuple[str, list[dict]]:
         block, cites, used = [], [], 0
@@ -158,6 +170,18 @@ class KnowledgeBase:
         from .memory import needs_condense
         from .rewrite import rewrite
 
+        version = self._doc_version()
+        if self._cache is not None:  # cache_lookup
+            cached = self._cache.get(question, version)
+            if cached is not None:
+                self.last_cost = {"calls": 0, "prompt_tokens": 0, "completion_tokens": 0}
+                return Answer(
+                    text=cached["text"],
+                    citations=cached.get("citations", []),
+                    grounded=cached.get("grounded", True),
+                    note=cached.get("note", "") + "（来自缓存）",
+                )
+
         # 有历史就把历史给模型，由它判断要不要补全。
         # 之前用 needs_condense() 做硬门控，漏掉了"达不到怎么赔？"这类省略主语的追问，
         # 结果检索丢了"99.9%"这个关键限定。
@@ -180,11 +204,11 @@ class KnowledgeBase:
         best_vec = max((h.vector_score for h in hits), default=0.0)
 
         if not hits or best_vec < self.cfg.retrieve.min_score:
-            return Answer(
+            return self._finish(Answer(
                 text=REFUSAL.format(q=query),
                 grounded=False,
                 note=f"最高向量相似度 {best_vec:.3f} < 阈值 {self.cfg.retrieve.min_score}",
-            )
+            ), question, version)
 
         hits = _dedupe_by_parent(hits)
         context, cites = self._context(hits)
@@ -206,16 +230,28 @@ class KnowledgeBase:
                 print(f"  [warn] 严格模式后仍有无法支持的论断：{issues[:3]}")
 
         if "资料中没有提到" in text and not cited:
-            return Answer(text=text, citations=[], hits=hits, grounded=grounded,
-                          note="检索有结果但资料不足以支撑回答")
+            return self._finish(Answer(text=text, citations=[], hits=hits, grounded=grounded,
+                          note="检索有结果但资料不足以支撑回答"), question, version)
 
-        return Answer(
+        return self._finish(Answer(
             text=text,
             citations=[c for c in cites if c["n"] in cited] or cites[:3],
             hits=hits,
             grounded=grounded,
             note="" if grounded else f"含 {len(issues)} 处未验证论断",
-        )
+        ), question, version)
+
+    def _finish(self, ans: Answer, question: str, version: str) -> Answer:
+        """统一出口：写缓存 + 记录本轮 token 成本。"""
+        self.last_cost = dict(self.llm.stats)
+        if self._cache is not None and ans.text:
+            self._cache.put(question, version, {
+                "text": ans.text,
+                "citations": ans.citations,
+                "grounded": ans.grounded,
+                "note": ans.note,
+            })
+        return ans
 
     def _verify(self, answer: str, context: str) -> tuple[bool, list[str]]:
         if "资料中没有提到" in answer:

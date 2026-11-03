@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import json
 import re
+import time
 from collections.abc import Iterator
+from pathlib import Path
 
 from openai import OpenAI
 
@@ -15,6 +17,24 @@ class LLM:
     def __init__(self, cfg: LLMConfig) -> None:
         self.cfg = cfg
         self.client = OpenAI(api_key=cfg.api_key, base_url=cfg.base_url)
+        # token 记账：每次调用累加，写 JSONL 供成本报表使用
+        self.usage_path = Path(__file__).resolve().parent.parent / "cache" / "usage.jsonl"
+        self.stats = {"calls": 0, "prompt_tokens": 0, "completion_tokens": 0}
+
+    def _record(self, resp, kind: str = "chat") -> None:
+        u = getattr(resp, "usage", None)
+        pt = getattr(u, "prompt_tokens", 0) or 0
+        ct = getattr(u, "completion_tokens", 0) or 0
+        self.stats["calls"] += 1
+        self.stats["prompt_tokens"] += pt
+        self.stats["completion_tokens"] += ct
+        try:
+            self.usage_path.parent.mkdir(parents=True, exist_ok=True)
+            with self.usage_path.open("a", encoding="utf-8") as fh:
+                fh.write(json.dumps({"ts": time.time(), "kind": kind,
+                                     "prompt": pt, "completion": ct}) + "\n")
+        except OSError:
+            pass
 
     def chat(self, system: str, user: str, *, temperature: float | None = None,
              max_tokens: int | None = None) -> str:
@@ -27,6 +47,7 @@ class LLM:
             temperature=self.cfg.temperature if temperature is None else temperature,
             max_tokens=self.cfg.max_tokens if max_tokens is None else max_tokens,
         )
+        self._record(resp)
         return resp.choices[0].message.content or ""
 
     def chat_messages(self, messages: list[dict], **kw) -> str:

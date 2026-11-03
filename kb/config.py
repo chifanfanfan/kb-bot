@@ -66,6 +66,8 @@ class Config:
     verify_min_chars: int = 0      # 条件校验：64 条子集上省 1.5s，255 条上只省 0.2s 且掉 1 题，已回退
     memory_summary_chars: int = 1200
     store_dir: Path = STORE_DIR   # 允许换库（测试 / 多租户）
+    use_cache: bool = True        # 答案缓存（同一问题不重复跑全链路）
+    cache_dir: Path = ROOT / "cache" / "answers.jsonl"
 
 
 def _resolve_key() -> str:
