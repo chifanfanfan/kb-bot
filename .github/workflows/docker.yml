@@ -8,11 +8,13 @@ on:
 jobs:
   build-and-run:
     runs-on: ubuntu-latest
+    timeout-minutes: 30          # 卡住就快速失败，不再烧 6 小时
     steps:
       - uses: actions/checkout@v4
 
       - name: Build image
-        run: docker build -t kb-bot .
+        # runner 在海外，直连 huggingface.co 更快；国内镜像源留给本地用
+        run: docker build --build-arg HF_ENDPOINT=https://huggingface.co -t kb-bot .
 
       - name: Run container
         run: docker run -d --name kb -p 8000:8000 kb-bot

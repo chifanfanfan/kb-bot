@@ -2,8 +2,11 @@ FROM python:3.12-slim
 
 WORKDIR /app
 ENV PYTHONUNBUFFERED=1 \
-    PIP_NO_CACHE_DIR=1 \
-    HF_ENDPOINT=https://hf-mirror.com
+    PIP_NO_CACHE_DIR=1
+
+# 模型下载源：国内默认镜像；CI/海外用 --build-arg HF_ENDPOINT=https://huggingface.co
+ARG HF_ENDPOINT=https://hf-mirror.com
+ENV HF_ENDPOINT=${HF_ENDPOINT}
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt
