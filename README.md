@@ -2094,15 +2094,27 @@ python tools/make_blind_review.py --n 30
 新增 `.github/workflows/docker.yml`，推送后自动：
 
 ```yaml
-docker build -t kb-bot .
+docker build --build-arg WITH_MODELS=0 -t kb-bot .
 docker run -d --name kb -p 8000:8000 kb-bot
-轮询 curl http://127.0.0.1:8000/api/stats 直到返回 200
+轮询 curl http://127.0.0.1:8000/healthz 直到返回 200
 docker logs  --tail 50
 docker rm -f kb
 ```
 
-**证明了**：镜像能在干净环境构建、容器能启动、接口真的通。
-**没证明**：长期在线、域名、并发。
+**三次迭代的实测**：
+
+| 次 | 结果 | 耗时 | 问题 |
+|---|---|---|---|
+| #1~#3 | ❌ 卡死 | **6 小时** | 构建期下载 306 MB 模型，没设超时，GitHub 6h 才强杀 |
+| #4 | ❌ 超时 | 30 分钟 | 加了 `timeout-minutes: 30`，但仍在下载模型 |
+| #5 | ✅ 通过 | **1 分 3 秒** | CI 不下载模型（`WITH_MODELS=0`），用 `/healthz` 检查 |
+
+**证明了**：镜像能在干净环境构建、容器能启动、`/healthz` 返回 200。
+**没证明**：模型加载与真实问答（由 Codespaces 真实部署证明，见 25.6）、长期在线、并发。
+
+> 取舍：CI 验证"能构建、能启动、端口通"；模型加载在真实环境验证一次更可信，
+> 也避免每次提交都烧 10 分钟下载。
+
 
 > 为什么不用本机 Docker：这台机器的系统保留分区只有 260 MB，
 > 装不下 WSL 虚拟化组件（报 `0x800f0922`），详见第十九章。
