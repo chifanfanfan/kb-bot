@@ -13,7 +13,9 @@ RUN pip install -r requirements.txt
 
 COPY . .
 # 模型在构建期下载（约 306 MB）；想放到卷里可注释掉这行、改为启动时执行
-RUN python scripts/fetch_models.py
+# CI 里用 --build-arg WITH_MODELS=0 跳过，只验证"镜像能构建、服务能起"
+ARG WITH_MODELS=1
+RUN if [ "$WITH_MODELS" = "1" ]; then python scripts/fetch_models.py; else echo "skip models"; fi
 
 EXPOSE 8000
 CMD ["python", "server.py", "--host", "0.0.0.0", "--port", "8000"]

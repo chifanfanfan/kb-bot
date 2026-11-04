@@ -38,6 +38,22 @@ def index():
     return render_template("index.html")
 
 
+@app.get("/healthz")
+def healthz():
+    """轻量健康检查：不碰向量库、不加载模型。
+
+    CI 里用它验证"镜像能起、端口能通"，
+    避免为了跑一次检查去下载 306 MB 模型。
+    """
+    from pathlib import Path
+
+    model_dir = Path(__file__).resolve().parent.parent / "models"
+    return jsonify({
+        "ok": True,
+        "models": model_dir.exists() and any(model_dir.iterdir()),
+    })
+
+
 @app.get("/api/stats")
 def api_stats():
     store = kb().store
